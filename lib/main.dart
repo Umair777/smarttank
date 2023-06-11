@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smarttank/dashboard.dart';
+//import 'package:flutter/GoogleFonts';
 
 void main() {
   runApp(MyApp());
@@ -10,12 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Material(
-      child: Center(
-        child: Container(
-          child: Text("Good Morning"),
-        ),
-      ),
-    ));
+      themeMode: ThemeMode.light,
+      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'WorkSans'
+          // fontFamily: GoogleFonts.lato().fontFamily,
+          ),
+      // home: const Dashboard()
+      routes: {
+        "/": (context) => Dashboard(),
+      },
+    );
   }
 }
