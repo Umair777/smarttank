@@ -27,7 +27,7 @@ class SensorStatus extends StatelessWidget {
             child: Container(
                 width: 5,
                 height: 13,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(1),
                     topRight: Radius.circular(1),
@@ -36,9 +36,7 @@ class SensorStatus extends StatelessWidget {
                   ),
                   color: Color.fromRGBO(255, 255, 255, 1),
                 ))),
-
-        //Now its visible from here but the above container is not visible.
-        Positioned(
+        const Positioned(
           top: 198,
           left: 49,
           child: Text(
@@ -70,7 +68,7 @@ class SensorStatus extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
+        const Positioned(
           top: 168,
           left: 263,
           child: Text(
@@ -91,6 +89,57 @@ class SensorStatus extends StatelessWidget {
             semanticsLabel: 'vector16',
           ),
         ),
+        /*   
+        //SAVINGS
+        Positioned(
+            top: 239,
+            left: 20,
+            child: Container(
+                width: 372,
+                height: 177,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(31),
+                    topRight: Radius.circular(31),
+                    bottomLeft: Radius.circular(31),
+                    bottomRight: Radius.circular(31),
+                  ),
+                  color: Color.fromRGBO(69, 70, 107, 1),
+                ))),
+        //MOTOR SWITCH
+        Positioned(
+            top: 668,
+            left: 26,
+            child: Container(
+                width: 372,
+                height: 89,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(31),
+                    topRight: Radius.circular(31),
+                    bottomLeft: Radius.circular(31),
+                    bottomRight: Radius.circular(31),
+                  ),
+                  color: Color.fromRGBO(69, 70, 107, 1),
+                ))),
+                
+        //GRAPH AND USAGE
+        Positioned(
+            top: 428,
+            left: 31,
+            child: Container(
+                width: 187,
+                height: 224,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(31),
+                    topRight: Radius.circular(31),
+                    bottomLeft: Radius.circular(31),
+                    bottomRight: Radius.circular(31),
+                  ),
+                  color: Color.fromRGBO(69, 70, 107, 1),
+                ))),
+                */
       ],
     );
   }

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:smarttank/motor_switch.dart';
+import 'package:smarttank/savings.dart';
 //import 'dart:math' as math;
 //import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smarttank/sensor.dart';
+
+import 'consumption_graph.dart';
 //import 'sensor.dart';
 
 class Dashboard extends StatelessWidget {
@@ -20,9 +24,10 @@ class Dashboard extends StatelessWidget {
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color.fromRGBO(21, 23, 45, 1),
                   ),
+                  //WIDGET STACK
                   child: Stack(
                     children: <Widget>[
                       Positioned(
@@ -39,7 +44,7 @@ class Dashboard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Positioned(
+                      const Positioned(
                         top: 83,
                         left: 28,
                         child: Text(
@@ -68,7 +73,10 @@ class Dashboard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SensorStatus(), // Add the SensorStatus widget here
+                      SensorStatus(), // Adding the SensorStatus widget here
+                      WaterSaving(),
+                      WaterConsumption(),
+                      MotorSwitch(),
                     ],
                   ),
                 ),
