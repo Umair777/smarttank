@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Dashboard extends StatelessWidget {
@@ -22,6 +23,7 @@ class Dashboard extends StatelessWidget {
                   ),
                   child: Stack(
                     children: <Widget>[
+                      //Move to Sensor.dart
                       Positioned(
                         top: 165,
                         left: 18,
@@ -39,6 +41,7 @@ class Dashboard extends StatelessWidget {
                           ),
                         ),
                       ),
+                      //Move to Sensor.dart till here
                       const Positioned(
                           top: 198,
                           left: 49,
@@ -46,20 +49,19 @@ class Dashboard extends StatelessWidget {
                             'Sensor Status',
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                                color: Color.fromRGBO(
-                                    255, 255, 255, 0.8399999737739563),
-                                fontFamily: 'Work Sans',
-                                fontSize: 18,
-                                letterSpacing:
-                                    0 /*percentages not used in flutter. defaulting to zero*/,
-                                fontWeight: FontWeight.normal,
-                                height: 1),
+                              color: Color.fromRGBO(
+                                  255, 255, 255, 0.8399999737739563),
+                              fontFamily: 'WorkSans',
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
                           )),
-                      Positioned(
+                      //Move to Sensor.dart till here
+                      const Positioned(
                         top: 168,
                         left: 263,
                         child: Text(
-                          'Connecting',
+                          'Connected',
                           style: TextStyle(
                             fontFamily: 'WorkSans',
                             color: Colors.white,
@@ -74,13 +76,14 @@ class Dashboard extends StatelessWidget {
                         child: SvgPicture.asset('assets/images/vector16.svg',
                             semanticsLabel: 'vector16'),
                       ),
+                      //Move to Sensor.dart till here
                       Positioned(
                         top: 106,
                         left: 38,
                         child: Container(
                           width: 85,
                           height: 107,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage(
                                   'assets/images/Liquidlevelcontrolicon1.png'),
@@ -91,13 +94,15 @@ class Dashboard extends StatelessWidget {
                           ),
                         ),
                       ),
+
+                      ///Keep it here in dashbord.dart
                       Positioned(
                         top: 38,
                         left: 305,
                         child: Container(
                           width: 59,
                           height: 59,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage('assets/images/Pngegg1.png'),
                               fit: BoxFit.fitWidth,
@@ -105,7 +110,9 @@ class Dashboard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Positioned(
+
+                      ///Keep it here in dashbord.dart
+                      const Positioned(
                         top: 83,
                         left: 28,
                         child: Text(
@@ -113,7 +120,7 @@ class Dashboard extends StatelessWidget {
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Color.fromRGBO(241, 248, 255, 1),
-                            fontFamily: 'Work Sans',
+                            fontFamily: 'WorkSans',
                             fontSize: 20,
                             letterSpacing: 0,
                             fontWeight: FontWeight.normal,
@@ -121,7 +128,8 @@ class Dashboard extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Positioned(
+                      //Keep it here in dashbord.dart
+                      const Positioned(
                         top: 38,
                         left: 28,
                         child: Text(
