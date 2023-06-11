@@ -23,47 +23,104 @@ class Dashboard extends StatelessWidget {
                   child: Stack(
                     children: <Widget>[
                       Positioned(
-                          top: 139,
-                          left: 18,
-                          child: Container(
-                              width: 352,
-                              height: 65,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(31),
-                                  topRight: Radius.circular(31),
-                                  bottomLeft: Radius.circular(31),
-                                  bottomRight: Radius.circular(31),
-                                ),
-                                color: Color.fromRGBO(69, 70, 107, 1),
-                              ))),
-                      Positioned(
-                          top: 38,
-                          left: 305,
-                          child: Container(
-                              width: 59,
-                              height: 59,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image:
-                                        AssetImage('assets/images/Pngegg1.png'),
-                                    fit: BoxFit.fitWidth),
-                              ))),
-                      Positioned(
-                          top: 83,
-                          left: 28,
+                        top: 165,
+                        left: 18,
+                        child: Container(
+                          width: 372,
+                          height: 65,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(31),
+                              topRight: Radius.circular(31),
+                              bottomLeft: Radius.circular(31),
+                              bottomRight: Radius.circular(31),
+                            ),
+                            color: Color.fromRGBO(69, 70, 107, 1),
+                          ),
+                        ),
+                      ),
+                      const Positioned(
+                          top: 198,
+                          left: 49,
                           child: Text(
-                            'Sunday 5:00 AM',
+                            'Sensor Status',
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                                color: Color.fromRGBO(241, 248, 255, 1),
+                                color: Color.fromRGBO(
+                                    255, 255, 255, 0.8399999737739563),
                                 fontFamily: 'Work Sans',
-                                fontSize: 20,
+                                fontSize: 18,
                                 letterSpacing:
                                     0 /*percentages not used in flutter. defaulting to zero*/,
                                 fontWeight: FontWeight.normal,
                                 height: 1),
                           )),
+                      Positioned(
+                        top: 168,
+                        left: 263,
+                        child: Text(
+                          'Connecting',
+                          style: TextStyle(
+                            fontFamily: 'WorkSans',
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 194,
+                        left: 271,
+                        child: SvgPicture.asset('assets/images/vector16.svg',
+                            semanticsLabel: 'vector16'),
+                      ),
+                      Positioned(
+                        top: 106,
+                        left: 38,
+                        child: Container(
+                          width: 85,
+                          height: 107,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage(
+                                  'assets/images/Liquidlevelcontrolicon1.png'),
+                              fit: BoxFit.fitWidth,
+                              colorFilter: ColorFilter.mode(Colors.white,
+                                  BlendMode.modulate), // Apply color filter
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 38,
+                        left: 305,
+                        child: Container(
+                          width: 59,
+                          height: 59,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/Pngegg1.png'),
+                              fit: BoxFit.fitWidth,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 83,
+                        left: 28,
+                        child: Text(
+                          'Sunday 5:00 AM',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            color: Color.fromRGBO(241, 248, 255, 1),
+                            fontFamily: 'Work Sans',
+                            fontSize: 20,
+                            letterSpacing: 0,
+                            fontWeight: FontWeight.normal,
+                            height: 1,
+                          ),
+                        ),
+                      ),
                       Positioned(
                         top: 38,
                         left: 28,
