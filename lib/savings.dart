@@ -37,22 +37,13 @@ class WaterSaving extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             )),
-        // Positioned(
-        //     top: 610,
-        //     left: 51,
-        //     child: Transform.rotate(
-        //       angle: 90 * (math.pi / 180),
-        //       child: Divider(
-        //           color: Color.fromRGBO(144, 202, 255, 1),
-        //           //thickness: 1.7999999523162842
-        //           thickness: 50),
-        //     )),
+
         Positioned(
             top: 610,
             left: 51,
             child: Transform.rotate(
               angle: 90 * (math.pi / 180),
-              child: Divider(
+              child: const Divider(
                   color: Color.fromRGBO(144, 202, 255, 1),
                   thickness: 1.7999999523162842),
             )),
@@ -61,7 +52,7 @@ class WaterSaving extends StatelessWidget {
             left: 85,
             child: Transform.rotate(
               angle: 90.00000000000001 * (math.pi / 180),
-              child: Divider(
+              child: const Divider(
                   color: Color.fromRGBO(144, 202, 255, 1),
                   thickness: 1.7999999523162842),
             )),
@@ -70,7 +61,7 @@ class WaterSaving extends StatelessWidget {
             left: 117,
             child: Transform.rotate(
               angle: 90.00000000000001 * (math.pi / 180),
-              child: Divider(
+              child: const Divider(
                   color: Color.fromRGBO(144, 202, 255, 1),
                   thickness: 1.7999999523162842),
             )),
@@ -110,12 +101,115 @@ class WaterSaving extends StatelessWidget {
           child: SvgPicture.asset('assets/images/vector14.svg',
               semanticsLabel: 'vector14'),
         ),
+
         Positioned(
           top: 304,
           left: 104,
           child: SvgPicture.asset('assets/images/vector15.svg',
               semanticsLabel: 'vector15'),
         ),
+        Positioned(
+            top: 292,
+            left: 161,
+            child: Container(
+                width: 55,
+                height: 75,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/Saveearth1.png'),
+                      fit: BoxFit.fitWidth),
+                ))),
+
+        Positioned(
+            top: 367,
+            left: 245,
+            child: Text(
+              'Water',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  fontFamily: 'WorkSans',
+                  fontSize: 15,
+                  letterSpacing:
+                      0 /*percentages not used in flutter. defaulting to zero*/,
+                  fontWeight: FontWeight.normal,
+                  height: 1),
+            )),
+        Positioned(
+            top: 309,
+            left: 49,
+            child: Text(
+              'CO2\nEmission',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  fontFamily: 'WorkSans',
+                  fontSize: 15,
+                  letterSpacing:
+                      0 /*percentages not used in flutter. defaulting to zero*/,
+                  fontWeight: FontWeight.normal,
+                  height: 1),
+            )),
+        Positioned(
+            top: 299,
+            left: 281,
+            child: Text(
+              'Electricity',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  fontFamily: 'WorkSans',
+                  fontSize: 15,
+                  letterSpacing:
+                      0 /*percentages not used in flutter. defaulting to zero*/,
+                  fontWeight: FontWeight.normal,
+                  height: 1),
+            )),
+        Positioned(
+            top: 321,
+            left: 283,
+            child: Text(
+              '1.6 kW',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  fontFamily: 'WorkSans',
+                  fontSize: 16,
+                  letterSpacing:
+                      0 /*percentages not used in flutter. defaulting to zero*/,
+                  fontWeight: FontWeight.normal,
+                  height: 1),
+            )),
+        Positioned(
+            top: 386,
+            left: 245,
+            child: Text(
+              '4.5 kL',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  fontFamily: 'WorkSans',
+                  fontSize: 16,
+                  letterSpacing:
+                      0 /*percentages not used in flutter. defaulting to zero*/,
+                  fontWeight: FontWeight.normal,
+                  height: 1),
+            )),
+        Positioned(
+            top: 344,
+            left: 52,
+            child: Text(
+              '2.5 kg',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  fontFamily: 'WorkSans',
+                  fontSize: 16,
+                  letterSpacing:
+                      0 /*percentages not used in flutter. defaulting to zero*/,
+                  fontWeight: FontWeight.normal,
+                  height: 1),
+            )),
       ],
     );
   }

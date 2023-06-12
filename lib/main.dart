@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smarttank/dashboard.dart';
+import 'dart:math' as math;
 //import 'package:flutter/GoogleFonts';
 
 void main() {
