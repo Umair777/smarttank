@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WaterConsumption extends StatelessWidget {
+  double add_height = 32;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         //Consumption Container
         Positioned(
-            top: 428,
+            top: 428 + add_height,
             left: 31,
             child: Container(
                 width: 187,
@@ -23,7 +24,7 @@ class WaterConsumption extends StatelessWidget {
                   color: Color.fromRGBO(69, 70, 107, 1),
                 ))),
         Positioned(
-            top: 448,
+            top: 448 + add_height,
             left: 57,
             child: Text(
               'Water Consumption',
@@ -35,7 +36,7 @@ class WaterConsumption extends StatelessWidget {
                   fontWeight: FontWeight.w600),
             )),
         Positioned(
-            top: 483,
+            top: 483 + add_height,
             left: 64,
             child: Text(
               'Today',
@@ -50,7 +51,7 @@ class WaterConsumption extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 496,
+            top: 496 + add_height,
             left: 64,
             child: Text(
               '540 L',
@@ -65,7 +66,7 @@ class WaterConsumption extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 592,
+            top: 592 + add_height,
             left: 46,
             child: Container(
                 width: 9,
@@ -79,7 +80,7 @@ class WaterConsumption extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.elliptical(9, 9)),
                 ))),
         Positioned(
-            top: 560,
+            top: 560 + add_height,
             left: 80,
             child: Container(
                 width: 9,
@@ -93,7 +94,7 @@ class WaterConsumption extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.elliptical(9, 9)),
                 ))),
         Positioned(
-            top: 551,
+            top: 551 + add_height,
             left: 128,
             child: Container(
                 width: 16,
@@ -107,7 +108,7 @@ class WaterConsumption extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.elliptical(16, 18)),
                 ))),
         Positioned(
-            top: 551,
+            top: 551 + add_height,
             left: 112,
             child: Container(
                 width: 9,
@@ -121,7 +122,7 @@ class WaterConsumption extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.elliptical(9, 9)),
                 ))),
         Positioned(
-            top: 573,
+            top: 573 + add_height,
             left: 148,
             child: Container(
                 width: 9,
@@ -135,7 +136,7 @@ class WaterConsumption extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.elliptical(9, 9)),
                 ))),
         Positioned(
-            top: 592,
+            top: 592 + add_height,
             left: 182,
             child: Container(
                 width: 9,
@@ -149,7 +150,7 @@ class WaterConsumption extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.elliptical(9, 9)),
                 ))),
         Positioned(
-            top: 625,
+            top: 625 + add_height,
             left: 43,
             child: Text(
               '12am',
@@ -164,7 +165,7 @@ class WaterConsumption extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 626,
+            top: 626 + add_height,
             left: 76,
             child: Text(
               '6am',
@@ -179,7 +180,7 @@ class WaterConsumption extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 626,
+            top: 626 + add_height,
             left: 109,
             child: Text(
               '12pm',
@@ -194,7 +195,7 @@ class WaterConsumption extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 625,
+            top: 625 + add_height,
             left: 141,
             child: Text(
               '6pm',
@@ -209,7 +210,7 @@ class WaterConsumption extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 625,
+            top: 625 + add_height,
             left: 177,
             child: Text(
               '12am',
@@ -224,7 +225,7 @@ class WaterConsumption extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 497,
+            top: 497 + add_height,
             left: 138,
             child: Text(
               '25 kL',
@@ -239,7 +240,7 @@ class WaterConsumption extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 486,
+            top: 486 + add_height,
             left: 137,
             child: Text(
               'Monthly',

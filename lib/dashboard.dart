@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:flutter_svg/flutter_svg.dart';
 
-
-        
 import 'package:flutter/material.dart';
 import 'package:smarttank/motor_switch.dart';
 import 'package:smarttank/savings.dart';
 //import 'dart:math' as math;
 //import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smarttank/sensor.dart';
+import 'package:smarttank/tank_level.dart';
 import 'package:smarttank/water_animation.dart';
 
 import 'consumption_graph.dart';
@@ -84,7 +83,8 @@ class Dashboard extends StatelessWidget {
                       WaterSaving(),
                       WaterConsumption(),
                       MotorSwitch(),
-                      WaterAnimation(),
+                      WaterUpdater(),
+                      TankLevel(),
                     ],
                   ),
                 ),

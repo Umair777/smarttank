@@ -3,13 +3,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
 
 class WaterSaving extends StatelessWidget {
+  double add_height = 8;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         //SAVINGS
         Positioned(
-            top: 239,
+            top: 239 + add_height,
             left: 20,
             child: Container(
                 width: 372,
@@ -23,8 +24,8 @@ class WaterSaving extends StatelessWidget {
                   ),
                   color: Color.fromRGBO(69, 70, 107, 1),
                 ))),
-        const Positioned(
-            top: 247,
+        Positioned(
+            top: 247 + add_height,
             left: 133,
             child: Text(
               'Savings + Benefits',
@@ -43,7 +44,7 @@ class WaterSaving extends StatelessWidget {
         //             child: SvgPicture.asset('assets/images/ellipse16.svg',
         //                 semanticsLabel: 'ellipse16')),
         Positioned(
-            top: 271,
+            top: 271 + add_height,
             left: 132,
             child: Container(
                 width: 135,
@@ -55,7 +56,7 @@ class WaterSaving extends StatelessWidget {
                 ))),
         //WATER_DROP
         Positioned(
-          top: 379,
+          top: 379 + add_height,
           left: 194,
           width: 15,
           height: 25,
@@ -64,14 +65,14 @@ class WaterSaving extends StatelessWidget {
         ),
         //ELECTRICTY
         Positioned(
-          top: 295,
+          top: 295 + add_height,
           left: 241,
           child: SvgPicture.asset('assets/images/vector14.svg',
               semanticsLabel: 'vector14'),
         ),
 
         Positioned(
-            top: 305,
+            top: 305 + add_height,
             left: 177,
             child: Container(
                 width: 45,
@@ -82,7 +83,7 @@ class WaterSaving extends StatelessWidget {
                       fit: BoxFit.fitWidth),
                 ))),
         Positioned(
-            top: 285,
+            top: 285 + add_height,
             left: 120,
             child: Container(
                 width: 45,
@@ -94,7 +95,7 @@ class WaterSaving extends StatelessWidget {
                 ))),
 
         Positioned(
-            top: 367,
+            top: 367 + add_height,
             left: 255,
             child: Text(
               'Water',
@@ -109,7 +110,7 @@ class WaterSaving extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 309,
+            top: 309 + add_height,
             left: 49,
             child: Text(
               'CO2\nEmission',
@@ -124,7 +125,7 @@ class WaterSaving extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 299,
+            top: 299 + add_height,
             left: 281,
             child: Text(
               'Electricity',
@@ -139,7 +140,7 @@ class WaterSaving extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 321,
+            top: 321 + add_height,
             left: 283,
             child: Text(
               '1.6 kW',
@@ -154,7 +155,7 @@ class WaterSaving extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 386,
+            top: 386 + add_height,
             left: 245,
             child: Text(
               '4.5 kL',
@@ -169,7 +170,7 @@ class WaterSaving extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 344,
+            top: 344 + add_height,
             left: 52,
             child: Text(
               '2.5 kg',

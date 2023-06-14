@@ -4,6 +4,7 @@ import 'dart:math' as math;
 
 class MotorSwitch extends StatelessWidget {
   bool _isSwitched = false;
+  double add_height = 37;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -11,10 +12,10 @@ class MotorSwitch extends StatelessWidget {
         //Consumption Container
 
         Positioned(
-            top: 668,
+            top: 668 + add_height,
             left: 26,
             child: Container(
-                width: 372,
+                width: 356,
                 height: 89,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -25,25 +26,11 @@ class MotorSwitch extends StatelessWidget {
                   ),
                   color: Color.fromRGBO(69, 70, 107, 1),
                 ))),
+
         Positioned(
-            top: 668,
-            left: 26,
-            child: Container(
-                width: 341,
-                height: 89,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(31),
-                    topRight: Radius.circular(31),
-                    bottomLeft: Radius.circular(31),
-                    bottomRight: Radius.circular(31),
-                  ),
-                  color: Color.fromRGBO(69, 70, 107, 1),
-                ))),
-        const Positioned(
-            top: 731,
+            top: 731 + add_height,
             left: 40,
-            child: Text(
+            child: const Text(
               'Motor',
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -55,10 +42,10 @@ class MotorSwitch extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                   height: 1),
             )),
-        const Positioned(
-            top: 726,
+        Positioned(
+            top: 726 + add_height,
             left: 320,
-            child: Text(
+            child: const Text(
               'ON',
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -69,7 +56,7 @@ class MotorSwitch extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 679,
+            top: 679 + add_height,
             left: 42,
             child: Container(
                 width: 57,
@@ -80,15 +67,15 @@ class MotorSwitch extends StatelessWidget {
                       fit: BoxFit.fitWidth),
                 ))),
 
-        Positioned(
-            top: 610,
-            left: 51,
-            child: Transform.rotate(
-              angle: 90 * (math.pi / 180),
-              child: Divider(
-                  color: Color.fromRGBO(144, 202, 255, 1),
-                  thickness: 1.7999999523162842),
-            )),
+        // Positioned(
+        //     top: 610,
+        //     left: 51,
+        //     child: Transform.rotate(
+        //       angle: 90 * (math.pi / 180),
+        //       child: Divider(
+        //           color: Color.fromRGBO(144, 202, 255, 1),
+        //           thickness: 1.7999999523162842),
+        //     )),
       ],
     );
   }
