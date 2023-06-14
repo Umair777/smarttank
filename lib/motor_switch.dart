@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:math' as math;
 
 class MotorSwitch extends StatelessWidget {
+  bool _isSwitched = false;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -77,6 +79,16 @@ class MotorSwitch extends StatelessWidget {
                       image: AssetImage('assets/images/Motor3.png'),
                       fit: BoxFit.fitWidth),
                 ))),
+
+        Positioned(
+            top: 610,
+            left: 51,
+            child: Transform.rotate(
+              angle: 90 * (math.pi / 180),
+              child: Divider(
+                  color: Color.fromRGBO(144, 202, 255, 1),
+                  thickness: 1.7999999523162842),
+            )),
       ],
     );
   }

@@ -25,7 +25,7 @@ class WaterSaving extends StatelessWidget {
                 ))),
         const Positioned(
             top: 247,
-            left: 119,
+            left: 133,
             child: Text(
               'Savings + Benefits',
               textAlign: TextAlign.left,
@@ -37,64 +37,32 @@ class WaterSaving extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             )),
-
+        // Positioned(
+        //             top: 274,
+        //             left: 116,
+        //             child: SvgPicture.asset('assets/images/ellipse16.svg',
+        //                 semanticsLabel: 'ellipse16')),
         Positioned(
-            top: 610,
-            left: 51,
-            child: Transform.rotate(
-              angle: 90 * (math.pi / 180),
-              child: const Divider(
-                  color: Color.fromRGBO(144, 202, 255, 1),
-                  thickness: 1.7999999523162842),
-            )),
+            top: 271,
+            left: 132,
+            child: Container(
+                width: 135,
+                height: 135,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/circle.png'),
+                      fit: BoxFit.fitWidth),
+                ))),
+        //WATER_DROP
         Positioned(
-            top: 563,
-            left: 85,
-            child: Transform.rotate(
-              angle: 90.00000000000001 * (math.pi / 180),
-              child: const Divider(
-                  color: Color.fromRGBO(144, 202, 255, 1),
-                  thickness: 1.7999999523162842),
-            )),
-        Positioned(
-            top: 592,
-            left: 117,
-            child: Transform.rotate(
-              angle: 90.00000000000001 * (math.pi / 180),
-              child: const Divider(
-                  color: Color.fromRGBO(144, 202, 255, 1),
-                  thickness: 1.7999999523162842),
-            )),
-        Positioned(
-            top: 578,
-            left: 153,
-            child: Transform.rotate(
-              angle: 90 * (math.pi / 180),
-              child: Divider(
-                  color: Color.fromRGBO(144, 202, 255, 1),
-                  thickness: 1.7999999523162842),
-            )),
-        Positioned(
-            top: 593,
-            left: 187,
-            child: Transform.rotate(
-              angle: 90 * (math.pi / 180),
-              child: Divider(
-                  color: Color.fromRGBO(144, 202, 255, 1),
-                  thickness: 1.7999999523162842),
-            )),
-        Positioned(
-          top: 274,
-          left: 116,
-          child: SvgPicture.asset('assets/images/ellipse16.svg',
-              semanticsLabel: 'ellipse16'),
-        ),
-        Positioned(
-          top: 373,
-          left: 184,
+          top: 379,
+          left: 194,
+          width: 15,
+          height: 25,
           child: SvgPicture.asset('assets/images/vector13.svg',
               semanticsLabel: 'vector13'),
         ),
+        //ELECTRICTY
         Positioned(
           top: 295,
           left: 241,
@@ -103,26 +71,31 @@ class WaterSaving extends StatelessWidget {
         ),
 
         Positioned(
-          top: 304,
-          left: 104,
-          child: SvgPicture.asset('assets/images/vector15.svg',
-              semanticsLabel: 'vector15'),
-        ),
-        Positioned(
-            top: 292,
-            left: 161,
+            top: 305,
+            left: 177,
             child: Container(
-                width: 55,
-                height: 75,
+                width: 45,
+                height: 65,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/images/Saveearth1.png'),
                       fit: BoxFit.fitWidth),
                 ))),
+        Positioned(
+            top: 285,
+            left: 120,
+            child: Container(
+                width: 45,
+                height: 65,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/cloud1.png'),
+                      fit: BoxFit.fitWidth),
+                ))),
 
         Positioned(
             top: 367,
-            left: 245,
+            left: 255,
             child: Text(
               'Water',
               textAlign: TextAlign.left,

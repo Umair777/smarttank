@@ -23,6 +23,18 @@ class WaterConsumption extends StatelessWidget {
                   color: Color.fromRGBO(69, 70, 107, 1),
                 ))),
         Positioned(
+            top: 448,
+            left: 57,
+            child: Text(
+              'Water Consumption',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: Color.fromRGBO(255, 255, 255, 1),
+                  fontFamily: 'WorkSans',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600),
+            )),
+        Positioned(
             top: 483,
             left: 64,
             child: Text(

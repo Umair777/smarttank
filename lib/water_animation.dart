@@ -7,14 +7,6 @@ class WaterAnimation extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Positioned(
-          top: 194,
-          left: 271,
-          child: SvgPicture.asset(
-            'assets/images/vector16.svg',
-            semanticsLabel: 'vector16',
-          ),
-        ),
-        Positioned(
             top: 479,
             left: 276,
             child: Text(
@@ -29,9 +21,8 @@ class WaterAnimation extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                   height: 1),
             )),
-        
-        
       ],
     );
   }
-}
+}                              
+ 
