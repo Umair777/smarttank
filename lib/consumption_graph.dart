@@ -9,11 +9,11 @@ class WaterConsumption extends StatelessWidget {
       children: <Widget>[
         //Consumption Container
         Positioned(
-            top: 428 + add_height,
-            left: 31,
+            top: 409 + add_height,
+            left: 23,
             child: Container(
-                width: 187,
-                height: 224,
+                width: 205,
+                height: 254,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(31),
@@ -21,18 +21,27 @@ class WaterConsumption extends StatelessWidget {
                     bottomLeft: Radius.circular(31),
                     bottomRight: Radius.circular(31),
                   ),
-                  color: Color.fromRGBO(69, 70, 107, 1),
+                  //color: Color.fromRGBO(69, 70, 107, 1),
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color.fromRGBO(4, 70, 168, 0.745),
+                        Color.fromRGBO(5, 32, 86, 1),
+                        Color.fromRGBO(4, 24, 65, 1),
+                        Color.fromRGBO(1, 8, 27, 1)
+                      ]),
                 ))),
         Positioned(
-            top: 448 + add_height,
-            left: 57,
+            top: 425 + add_height,
+            left: 46,
             child: Text(
               'Water Consumption',
               textAlign: TextAlign.left,
               style: TextStyle(
                   color: Color.fromRGBO(255, 255, 255, 1),
                   fontFamily: 'WorkSans',
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600),
             )),
         Positioned(

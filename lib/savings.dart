@@ -13,7 +13,7 @@ class WaterSaving extends StatelessWidget {
             top: 239 + add_height,
             left: 20,
             child: Container(
-                width: 372,
+                width: 366,
                 height: 177,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -22,7 +22,16 @@ class WaterSaving extends StatelessWidget {
                     bottomLeft: Radius.circular(31),
                     bottomRight: Radius.circular(31),
                   ),
-                  color: Color.fromRGBO(69, 70, 107, 1),
+                  //color: Color.fromRGBO(69, 70, 107, 1),
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color.fromRGBO(4, 70, 168, 0.745),
+                        Color.fromRGBO(5, 32, 86, 1),
+                        Color.fromRGBO(4, 24, 65, 1),
+                        Color.fromRGBO(1, 8, 27, 1)
+                      ]),
                 ))),
         Positioned(
             top: 247 + add_height,

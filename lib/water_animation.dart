@@ -58,8 +58,8 @@ class _WaterUpdaterState extends State<WaterUpdater> {
             child: Stack(
               children: [
                 Positioned(
-                  top: 440,
-                  left: 55,
+                  top: 444,
+                  left: 58,
                   child: Container(
                     width: 530, // Set your desired width here
                     height: 330, // Set your desired height here

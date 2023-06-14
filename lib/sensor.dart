@@ -19,7 +19,16 @@ class SensorStatus extends StatelessWidget {
                     bottomLeft: Radius.circular(31),
                     bottomRight: Radius.circular(31),
                   ),
-                  color: Color.fromRGBO(69, 70, 107, 1),
+                  //color: Color.fromRGBO(69, 70, 107, 1),
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color.fromRGBO(4, 70, 168, 0.745),
+                        Color.fromRGBO(5, 32, 86, 1),
+                        Color.fromRGBO(4, 24, 65, 1),
+                        Color.fromRGBO(1, 8, 27, 1)
+                      ]),
                 ))),
         Positioned(
             top: 195,
@@ -34,7 +43,16 @@ class SensorStatus extends StatelessWidget {
                     bottomLeft: Radius.circular(1),
                     bottomRight: Radius.circular(1),
                   ),
-                  color: Color.fromRGBO(255, 255, 255, 1),
+                  //color: Color.fromRGBO(255, 255, 255, 1),
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color.fromRGBO(4, 70, 168, 0.745),
+                        Color.fromRGBO(5, 32, 86, 1),
+                        Color.fromRGBO(4, 24, 65, 1),
+                        Color.fromRGBO(1, 8, 27, 1)
+                      ]),
                 ))),
         const Positioned(
           top: 198,

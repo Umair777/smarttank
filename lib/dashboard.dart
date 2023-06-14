@@ -31,7 +31,7 @@ class Dashboard extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
                   decoration: const BoxDecoration(
-                    color: Color.fromRGBO(21, 23, 45, 1),
+                    color: Color.fromRGBO(0, 0, 0, 1),
                   ),
                   //WIDGET STACK
                   child: Stack(

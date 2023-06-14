@@ -4,7 +4,7 @@ import 'dart:math' as math;
 
 class MotorSwitch extends StatelessWidget {
   bool _isSwitched = false;
-  double add_height = 37;
+  double add_height = 45;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -24,7 +24,16 @@ class MotorSwitch extends StatelessWidget {
                     bottomLeft: Radius.circular(31),
                     bottomRight: Radius.circular(31),
                   ),
-                  color: Color.fromRGBO(69, 70, 107, 1),
+                  //color: Color.fromRGBO(69, 70, 107, 1),
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [                                                                                                    
+                        Color.fromRGBO(4, 70, 168, 0.745),
+                        Color.fromRGBO(5, 32, 86, 1),
+                        Color.fromRGBO(4, 24, 65, 1),
+                        Color.fromRGBO(1, 8, 27, 1)
+                      ]),
                 ))),
 
         Positioned(
@@ -80,3 +89,51 @@ class MotorSwitch extends StatelessWidget {
     );
   }
 }
+
+      // Figma Flutter Generator Group13Widget - GROUP
+ /*     Container(
+      width: 390,
+      height: 844,
+      
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+        top: 0,
+        left: 0,
+        child: Container(
+      width: 390,
+      height: 844,
+      decoration: BoxDecoration(
+          color : Color.fromRGBO(0, 0, 0, 1),
+  ),
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+        top: 428,
+        left: 31,
+        child: Container(
+        width: 187,
+        height: 224,
+        decoration: BoxDecoration(
+          borderRadius : BorderRadius.only(
+            topLeft: Radius.circular(31),
+            topRight: Radius.circular(31),
+            bottomLeft: Radius.circular(31),
+            bottomRight: Radius.circular(31),
+          ),
+      gradient : LinearGradient(
+          begin: Alignment(6.123234262925839e-17,1),
+          end: Alignment(-1,6.123234262925839e-17),
+          colors: [Color.fromRGBO(5, 105, 255, 0.75),Color.fromRGBO(9, 45, 116, 1),Color.fromRGBO(1, 17, 60, 1)]
+        ),
+  )
+      )
+      ),
+        ]
+      )
+    )
+      ),
+        ]
+      )
+    )
+    */

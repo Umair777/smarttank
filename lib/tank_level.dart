@@ -7,8 +7,8 @@ class TankLevel extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Positioned(
-            top: 479,
-            left: 276,
+            top: 579,
+            left: 290,
             child: Text(
               '50%',
               textAlign: TextAlign.left,
