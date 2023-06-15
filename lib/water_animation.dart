@@ -12,7 +12,7 @@ class WaterUpdater extends StatefulWidget {
 class _WaterUpdaterState extends State<WaterUpdater> {
   Artboard? _artboard;
   SimpleAnimation? _fillingAnimation;
-  bool _isFilling = true;
+  bool _isFilling = false;
 
   Timer? _animationTimer;
 
@@ -33,44 +33,25 @@ class _WaterUpdaterState extends State<WaterUpdater> {
       _fillingAnimation = SimpleAnimation('Filling');
       _artboard!.addController(_fillingAnimation!);
     });
-
-    // Start the animation timer
-    _startAnimationTimer();
   }
 
-  void _toggleAnimation() {
-    setState(() {
-      _isFilling = !_isFilling;
-      if (_isFilling) {
-        // Reset the animation to its initial state
-        _fillingAnimation?.reset();
-
-        // Restart the animation timer
-        _startAnimationTimer();
-      } else {
-        // Cancel the animation timer
-        _animationTimer?.cancel();
-      }
-      _fillingAnimation?.isActive = _isFilling;
-    });
+  void _resetAnimation() {
+    _fillingAnimation?.reset();
   }
 
-  void _startAnimationTimer() {
-    // Cancel the previous timer if it's running
+  void _startAnimation() {
+    _fillingAnimation?.isActive = true;
     _animationTimer?.cancel();
-
-    // Start a new timer for 1 second
     _animationTimer = Timer(Duration(seconds: 2), () {
       setState(() {
-        _isFilling = false;
-        _fillingAnimation?.isActive = _isFilling;
+        _fillingAnimation?.isActive = false;
       });
     });
   }
 
   @override
   void dispose() {
-    _animationTimer?.cancel(); // Cancel the timer to avoid memory leaks
+    _animationTimer?.cancel();
     super.dispose();
   }
 
@@ -80,28 +61,31 @@ class _WaterUpdaterState extends State<WaterUpdater> {
       children: [
         Expanded(
           flex: 3,
-          child: InkWell(
-            onTap: _toggleAnimation,
-            child: Stack(
-              children: [
-                Positioned(
-                  top: 444,
-                  left: 58,
-                  child: Container(
-                    width: 530,
-                    height: 330,
-                    child: _artboard != null
-                        ? RiveAnimation.asset(
+          child: Stack(
+            children: [
+              Positioned(
+                top: 444,
+                left: 58,
+                child: Container(
+                  width: 530,
+                  height: 330,
+                  child: _artboard != null
+                      ? GestureDetector(
+                          onTap: () {
+                            _resetAnimation();
+                            _startAnimation();
+                          },
+                          child: RiveAnimation.asset(
                             'assets/animations/smarttank.riv',
                             artboard: _artboard!.name,
                             fit: BoxFit.cover,
                             controllers: [_fillingAnimation!],
-                          )
-                        : const SizedBox(),
-                  ),
+                          ),
+                        )
+                      : const SizedBox(),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ],
