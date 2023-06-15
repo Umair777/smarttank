@@ -4,7 +4,7 @@ import 'dart:math' as math;
 
 class MotorSwitch extends StatelessWidget {
   bool _isSwitched = false;
-  double add_height = 45;
+  double add_height = 65;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -12,11 +12,11 @@ class MotorSwitch extends StatelessWidget {
         //Consumption Container
 
         Positioned(
-            top: 668 + add_height,
+            top: 668 + 67,
             left: 26,
             child: Container(
                 width: 356,
-                height: 89,
+                height: 92,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(31),
@@ -28,7 +28,7 @@ class MotorSwitch extends StatelessWidget {
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [                                                                                                    
+                      colors: [
                         Color.fromRGBO(4, 70, 168, 0.745),
                         Color.fromRGBO(5, 32, 86, 1),
                         Color.fromRGBO(4, 24, 65, 1),

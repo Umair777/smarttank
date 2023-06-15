@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
 
 class WaterSaving extends StatelessWidget {
-  double add_height = 8;
+  double add_height = 3;
   @override
   Widget build(BuildContext context) {
     return Stack(

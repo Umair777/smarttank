@@ -2,15 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WaterConsumption extends StatelessWidget {
-  double add_height = 32;
+  double add_height = 27;
+  double add_width = 1;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         //Consumption Container
+        // Positioned(
+        //     top: 668 + add_height,
+        //     left: 107,
+        //     child: Container(
+        //         width: 170,
+        //         height: 30,
+        //         decoration: const BoxDecoration(
+        //           borderRadius: BorderRadius.only(
+        //             topLeft: Radius.circular(31),
+        //             topRight: Radius.circular(31),
+        //             bottomLeft: Radius.circular(31),
+        //             bottomRight: Radius.circular(31),
+        //           ),
+        //           //color: Color.fromRGBO(69, 70, 107, 1),
+        //           gradient: LinearGradient(
+        //               begin: Alignment.topCenter,
+        //               end: Alignment.bottomCenter,
+        //               colors: [
+        //                 Color.fromRGBO(4, 74, 179, 0.737),
+        //                 Color.fromRGBO(5, 32, 86, 1),
+        //                 Color.fromRGBO(4, 24, 65, 1),
+        //                 Color.fromRGBO(1, 8, 27, 1)
+        //               ]),
+        //         ))),
         Positioned(
             top: 409 + add_height,
-            left: 23,
+            left: 23 + add_width,
             child: Container(
                 width: 205,
                 height: 254,
@@ -34,7 +59,7 @@ class WaterConsumption extends StatelessWidget {
                 ))),
         Positioned(
             top: 425 + add_height,
-            left: 46,
+            left: 46 + add_width,
             child: Text(
               'Water Consumption',
               textAlign: TextAlign.left,
@@ -46,7 +71,7 @@ class WaterConsumption extends StatelessWidget {
             )),
         Positioned(
             top: 483 + add_height,
-            left: 64,
+            left: 64 + add_width,
             child: Text(
               'Today',
               textAlign: TextAlign.left,
@@ -61,7 +86,7 @@ class WaterConsumption extends StatelessWidget {
             )),
         Positioned(
             top: 496 + add_height,
-            left: 64,
+            left: 64 + add_width,
             child: Text(
               '540 L',
               textAlign: TextAlign.left,
@@ -76,7 +101,7 @@ class WaterConsumption extends StatelessWidget {
             )),
         Positioned(
             top: 592 + add_height,
-            left: 46,
+            left: 46 + add_width,
             child: Container(
                 width: 9,
                 height: 9,
@@ -90,7 +115,7 @@ class WaterConsumption extends StatelessWidget {
                 ))),
         Positioned(
             top: 560 + add_height,
-            left: 80,
+            left: 80 + add_width,
             child: Container(
                 width: 9,
                 height: 9,
@@ -104,7 +129,7 @@ class WaterConsumption extends StatelessWidget {
                 ))),
         Positioned(
             top: 551 + add_height,
-            left: 128,
+            left: 128 + add_width,
             child: Container(
                 width: 16,
                 height: 18,
@@ -118,7 +143,7 @@ class WaterConsumption extends StatelessWidget {
                 ))),
         Positioned(
             top: 551 + add_height,
-            left: 112,
+            left: 112 + add_width,
             child: Container(
                 width: 9,
                 height: 9,
@@ -132,7 +157,7 @@ class WaterConsumption extends StatelessWidget {
                 ))),
         Positioned(
             top: 573 + add_height,
-            left: 148,
+            left: 148 + add_width,
             child: Container(
                 width: 9,
                 height: 9,
@@ -146,7 +171,7 @@ class WaterConsumption extends StatelessWidget {
                 ))),
         Positioned(
             top: 592 + add_height,
-            left: 182,
+            left: 182 + add_width,
             child: Container(
                 width: 9,
                 height: 9,
@@ -160,7 +185,7 @@ class WaterConsumption extends StatelessWidget {
                 ))),
         Positioned(
             top: 625 + add_height,
-            left: 43,
+            left: 43 + add_width,
             child: Text(
               '12am',
               textAlign: TextAlign.left,
@@ -175,7 +200,7 @@ class WaterConsumption extends StatelessWidget {
             )),
         Positioned(
             top: 626 + add_height,
-            left: 76,
+            left: 76 + add_width,
             child: Text(
               '6am',
               textAlign: TextAlign.left,
@@ -190,7 +215,7 @@ class WaterConsumption extends StatelessWidget {
             )),
         Positioned(
             top: 626 + add_height,
-            left: 109,
+            left: 109 + add_width,
             child: Text(
               '12pm',
               textAlign: TextAlign.left,
@@ -205,7 +230,7 @@ class WaterConsumption extends StatelessWidget {
             )),
         Positioned(
             top: 625 + add_height,
-            left: 141,
+            left: 141 + add_width,
             child: Text(
               '6pm',
               textAlign: TextAlign.left,
@@ -220,7 +245,7 @@ class WaterConsumption extends StatelessWidget {
             )),
         Positioned(
             top: 625 + add_height,
-            left: 177,
+            left: 177 + add_width,
             child: Text(
               '12am',
               textAlign: TextAlign.left,
@@ -235,7 +260,7 @@ class WaterConsumption extends StatelessWidget {
             )),
         Positioned(
             top: 497 + add_height,
-            left: 138,
+            left: 138 + add_width,
             child: Text(
               '25 kL',
               textAlign: TextAlign.left,
@@ -250,7 +275,7 @@ class WaterConsumption extends StatelessWidget {
             )),
         Positioned(
             top: 486 + add_height,
-            left: 137,
+            left: 137 + add_width,
             child: Text(
               'Monthly',
               textAlign: TextAlign.left,

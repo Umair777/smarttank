@@ -83,8 +83,8 @@ class Dashboard extends StatelessWidget {
                       WaterSaving(),
                       WaterConsumption(),
                       MotorSwitch(),
-                      WaterUpdater(),
                       TankLevel(),
+                      WaterUpdater(), // Provide the animationDuration value here
                     ],
                   ),
                 ),

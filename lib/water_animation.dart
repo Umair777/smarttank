@@ -42,7 +42,7 @@ class _WaterUpdaterState extends State<WaterUpdater> {
   void _startAnimation() {
     _fillingAnimation?.isActive = true;
     _animationTimer?.cancel();
-    _animationTimer = Timer(Duration(seconds: 2), () {
+    _animationTimer = Timer(Duration(seconds: 3), () {
       setState(() {
         _fillingAnimation?.isActive = false;
       });
@@ -65,7 +65,7 @@ class _WaterUpdaterState extends State<WaterUpdater> {
             children: [
               Positioned(
                 top: 444,
-                left: 58,
+                left: 57,
                 child: Container(
                   width: 530,
                   height: 330,
@@ -85,6 +85,21 @@ class _WaterUpdaterState extends State<WaterUpdater> {
                       : const SizedBox(),
                 ),
               ),
+              Positioned(
+                  top: 703,
+                  left: 171,
+                  child: const Text(
+                    'Tap to refresh',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color.fromRGBO(255, 255, 255, 1),
+                        fontFamily: 'WorkSans',
+                        fontSize: 12,
+                        letterSpacing:
+                            0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.normal,
+                        height: 1),
+                  )),
             ],
           ),
         ),
@@ -92,3 +107,15 @@ class _WaterUpdaterState extends State<WaterUpdater> {
     );
   }
 }
+// Positioned(
+              //     top: 624,
+              //     left: 288,
+              //     child: Container(
+              //         width: 45,
+              //         height: 70,
+              //         decoration: const BoxDecoration(
+              //           image: DecorationImage(
+              //               image: AssetImage('assets/images/reload.png'),
+              //               //opacity: 0.5,
+              //               fit: BoxFit.fitWidth),
+              //         ))),
