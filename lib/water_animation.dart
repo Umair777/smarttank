@@ -117,6 +117,21 @@ class _WaterUpdaterState extends State<WaterUpdater> {
                         : const SizedBox(),
                   ),
                 ),
+                const Positioned(
+                    top: 703,
+                    left: 171,
+                    child: Text(
+                      'Tap to refresh',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          color: Color.fromRGBO(255, 255, 255, 1),
+                          fontFamily: 'WorkSans',
+                          fontSize: 12,
+                          letterSpacing:
+                              0 /*percentages not used in flutter. defaulting to zero*/,
+                          fontWeight: FontWeight.normal,
+                          height: 1),
+                    )),
               ],
             ),
           ),
