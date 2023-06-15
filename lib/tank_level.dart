@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-final tankLevelProvider = Provider<int>((ref) => 20);
+final tankLevelProvider = Provider<int>((ref) => 50);
 
 class TankLevel extends StatelessWidget {
   @override
