@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 class WaterUpdater extends StatefulWidget {
+  const WaterUpdater({super.key});
+
   @override
   _WaterUpdaterState createState() => _WaterUpdaterState();
 }
@@ -9,7 +11,6 @@ class WaterUpdater extends StatefulWidget {
 class _WaterUpdaterState extends State<WaterUpdater> {
   Artboard? _artboard;
   SimpleAnimation? _fillingAnimation;
-  SimpleAnimation? _drainingAnimation;
 
   bool _isFilling = true;
 
@@ -28,22 +29,14 @@ class _WaterUpdaterState extends State<WaterUpdater> {
     setState(() {
       _artboard = artboard;
       _fillingAnimation = SimpleAnimation('Filling');
-      _drainingAnimation = SimpleAnimation('Draining');
       _artboard!.addController(_fillingAnimation!);
-      _artboard!.addController(_drainingAnimation!);
     });
   }
 
   void _toggleAnimation() {
     setState(() {
       _isFilling = !_isFilling;
-      if (_isFilling) {
-        _fillingAnimation?.isActive = true;
-        _drainingAnimation?.isActive = false;
-      } else {
-        _fillingAnimation?.isActive = false;
-        _drainingAnimation?.isActive = true;
-      }
+      _fillingAnimation?.isActive = _isFilling;
     });
   }
 
@@ -53,7 +46,7 @@ class _WaterUpdaterState extends State<WaterUpdater> {
       children: [
         Expanded(
           flex: 3,
-          child: GestureDetector(
+          child: InkWell(
             onTap: _toggleAnimation,
             child: Stack(
               children: [
@@ -68,9 +61,7 @@ class _WaterUpdaterState extends State<WaterUpdater> {
                             'assets/animations/smarttank.riv',
                             artboard: _artboard!.name,
                             fit: BoxFit.cover,
-                            controllers: _isFilling
-                                ? [_fillingAnimation!]
-                                : [_drainingAnimation!],
+                            controllers: [_fillingAnimation!],
                           )
                         : const SizedBox(),
                   ),
