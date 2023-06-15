@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'tank_level.dart';
 
-double mapTankLevelToDuration(double tankLevel) {
+double mapTankLevelToDuration(int tankLevel) {
   const double maxTankLevel = 100;
   const double maxDuration = 3000;
 
@@ -54,8 +54,12 @@ class _WaterUpdaterState extends State<WaterUpdater> {
     _animationTimer?.cancel();
 
     final tankLevel = ref.watch(tankLevelProvider);
+    // I want to check what value I am getting
 
-    double tankAnimationDuration = mapTankLevelToDuration(tankLevel as double);
+    print('Tank Level: $tankLevel');
+
+    double tankAnimationDuration = mapTankLevelToDuration(tankLevel);
+    print('Tank Level in milis: $tankAnimationDuration');
     _animationTimer = Timer(
       Duration(milliseconds: tankAnimationDuration.toInt()),
       () {
