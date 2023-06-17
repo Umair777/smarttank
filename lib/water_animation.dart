@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rive/rive.dart';
 import 'dart:async';
 
-import 'package:smarttank/tank_level.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'tank_level.dart';
 
-int mapTankLevelToDuration(int tankLevel) {
-  const int maxTankLevel = 100;
-  const int maxDuration = 3000;
+double mapTankLevelToDuration(int tankLevel) {
+  const double maxTankLevel = 100;
+  const double maxDuration = 3000;
 
-  return ((tankLevel / maxTankLevel) * maxDuration).toInt();
+  return (tankLevel / maxTankLevel) * maxDuration;
 }
 
 class WaterUpdater extends StatefulWidget {
@@ -22,7 +22,7 @@ class WaterUpdater extends StatefulWidget {
 class _WaterUpdaterState extends State<WaterUpdater> {
   Artboard? _artboard;
   SimpleAnimation? _fillingAnimation;
-  bool _isFilling = true;
+  bool _isFilling = false;
 
   Timer? _animationTimer;
 
@@ -43,100 +43,97 @@ class _WaterUpdaterState extends State<WaterUpdater> {
       _fillingAnimation = SimpleAnimation('Filling');
       _artboard!.addController(_fillingAnimation!);
     });
-
-    // Start the animation timer
-    _startAnimationTimer();
   }
 
-  void _toggleAnimation() {
-    setState(() {
-      _isFilling = !_isFilling;
-      if (_isFilling) {
-        // Reset the animation to its initial state
-        _fillingAnimation?.reset();
-
-        // Restart the animation timer
-        _startAnimationTimer();
-      } else {
-        // Cancel the animation timer
-        _animationTimer?.cancel();
-      }
-      _fillingAnimation?.isActive = _isFilling;
-    });
+  void _resetAnimation() {
+    _fillingAnimation?.reset();
   }
 
-  void _startAnimationTimer() {
-    // Cancel the previous timer if it's running
+  void _startAnimation(WidgetRef ref) {
+    _fillingAnimation?.isActive = true;
     _animationTimer?.cancel();
 
-    // Start a new timer for 1 second
-    // double tank_animation_duration = mapTankLevelToDuration(1500);
-    // print('Tank : $tank_animation_duration');
-    final container = ProviderContainer();
-    final tankLevel = container.read(tankLevelProvider);
-    int tank_animation_duration = mapTankLevelToDuration(tankLevel);
-    int t = tank_animation_duration.toInt();
-    print('T: $t');
-    _animationTimer = Timer(Duration(milliseconds: t), () {
-      setState(() {
-        _isFilling = false;
-        _fillingAnimation?.isActive = _isFilling;
-      });
-    });
+    final tankLevel = ref.watch(tankLevelProvider);
+    // I want to check what value I am getting
+
+    print('Tank Level: $tankLevel');
+
+    double tankAnimationDuration = mapTankLevelToDuration(tankLevel);
+    print('Tank Level in milis: $tankAnimationDuration');
+    _animationTimer = Timer(
+      Duration(milliseconds: tankAnimationDuration.toInt()),
+      () {
+        setState(() {
+          _fillingAnimation?.isActive = false;
+        });
+      },
+    );
   }
 
   @override
   void dispose() {
-    _animationTimer?.cancel(); // Cancel the timer to avoid memory leaks
+    _animationTimer?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 3,
-          child: InkWell(
-            onTap: _toggleAnimation,
-            child: Stack(
-              children: [
-                Positioned(
-                  top: 444,
-                  left: 58,
-                  child: Container(
-                    width: 530,
-                    height: 330,
-                    child: _artboard != null
-                        ? RiveAnimation.asset(
-                            'assets/animations/smarttank.riv',
-                            artboard: _artboard!.name,
-                            fit: BoxFit.cover,
-                            controllers: [_fillingAnimation!],
-                          )
-                        : const SizedBox(),
+    return Consumer(
+      builder: (context, ref, child) {
+        ref.listen<int>(tankLevelProvider, (prevTankLevel, tankLevel) {
+          // Handle provider value changes, if needed
+        });
+
+        return Row(
+          children: [
+            Expanded(
+              flex: 3,
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: 444,
+                    left: 57,
+                    child: Container(
+                      width: 530,
+                      height: 330,
+                      child: _artboard != null
+                          ? GestureDetector(
+                              onTap: () {
+                                _resetAnimation();
+                                _startAnimation(ref);
+                              },
+                              child: RiveAnimation.asset(
+                                'assets/animations/smarttank.riv',
+                                artboard: _artboard!.name,
+                                fit: BoxFit.cover,
+                                controllers: [_fillingAnimation!],
+                              ),
+                            )
+                          : const SizedBox(),
+                    ),
                   ),
-                ),
-                const Positioned(
+                  Positioned(
                     top: 703,
                     left: 171,
-                    child: Text(
+                    child: const Text(
                       'Tap to refresh',
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                          color: Color.fromRGBO(255, 255, 255, 1),
-                          fontFamily: 'WorkSans',
-                          fontSize: 12,
-                          letterSpacing:
-                              0 /*percentages not used in flutter. defaulting to zero*/,
-                          fontWeight: FontWeight.normal,
-                          height: 1),
-                    )),
-              ],
+                        color: Color.fromRGBO(255, 255, 255, 1),
+                        fontFamily: 'WorkSans',
+                        fontSize: 12,
+                        letterSpacing: 0,
+                        fontWeight: FontWeight.normal,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 }
