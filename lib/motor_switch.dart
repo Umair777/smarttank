@@ -33,7 +33,8 @@ class MotorSwitch extends StatelessWidget {
                         Color.fromRGBO(5, 32, 86, 1),
                         Color.fromRGBO(4, 24, 65, 1),
                         Color.fromRGBO(1, 8, 27, 1)
-                      ]),
+                      ]
+                  ),
                 ))),
 
         Positioned(
@@ -74,7 +75,84 @@ class MotorSwitch extends StatelessWidget {
                   image: DecorationImage(
                       image: AssetImage('assets/images/Motor3.png'),
                       fit: BoxFit.fitWidth),
-                ))),
+                )
+            )
+        ),
+        Positioned(
+              top: 680 + add_height,
+              left: 300,
+              child: Container(
+            width: 66,
+            height: 36,
+
+
+                  decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(31),
+                  topRight: Radius.circular(31),
+                  bottomLeft: Radius.circular(31),
+                  bottomRight: Radius.circular(31),
+                  ),
+                  color: Colors.blueAccent
+                  // gradient: LinearGradient(
+                  // begin: Alignment.topCenter,
+                  // end: Alignment.bottomCenter,
+                  // colors: [
+                  // Color.fromRGBO(4, 70, 161, 0.745),
+                  // Color.fromRGBO(5, 32, 161, 1),
+                  // Color.fromRGBO(4, 32, 161, 1),
+                  // Color.fromRGBO(10, 8, 161, 1)
+                  //]
+                  ),
+        )
+                  )
+        //)
+        // Positioned(
+        //     top: 680 + add_height,
+        //     left: 300,
+        //     child: Container(
+        //   width: 66,
+        //   height: 36,
+        //   child: Stack(
+        //     children: [
+        //       Positioned(
+        //         left: 0,
+        //         top: 0,
+        //         child: Container(
+        //           width: 36,
+        //           height: 36,
+        //           decoration: ShapeDecoration(
+        //             color: Colors.green,
+        //             shape: OvalBorder(),
+        //           ),
+        //         ),
+        //       ),
+        //       Positioned(
+        //         left: 30,
+        //         top: 0,
+        //         child: Container(
+        //           width: 36,
+        //           height: 36,
+        //           decoration: ShapeDecoration(
+        //             color: Colors.white,
+        //             shape: OvalBorder(),
+        //           ),
+        //         ),
+        //       ),
+        //       Positioned(
+        //         left: 21,
+        //         top: 0,
+        //         child: Container(
+        //           width: 31,
+        //           height: 36,
+        //           decoration: BoxDecoration(
+        //               color: Colors.yellow
+        //           ),
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ))
 
         // Positioned(
         //     top: 610,
