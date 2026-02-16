@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 
 double mapTankLevelToDuration(int tankLevel) {
   const double maxTankLevel = 100.0;
@@ -15,6 +16,7 @@ class Background extends StatelessWidget {
   Widget build(BuildContext context) {
     double tank_animation_duration = mapTankLevelToDuration(tank_level);
     var date_time = DateTime.now();
+    String formattedDate = DateFormat('EEEE h:mm a').format(date_time);
     return Stack(
       children: <Widget>[
         Positioned(
@@ -31,13 +33,13 @@ class Background extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const Positioned(
+                      Positioned(
                         top: 83,
                         left: 28,
                         child: Text(
 
                           //'Sunday 5:00 AM',
-                          $date_time,
+                          formattedDate,
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Color.fromRGBO(241, 248, 255, 1),
