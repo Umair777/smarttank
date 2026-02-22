@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+class MotorSwitch extends StatefulWidget {
+  @override
+  _MotorSwitchState createState() => _MotorSwitchState();
+}
 
-class MotorSwitch extends StatelessWidget {
-  bool _isSwitched = false;
+class _MotorSwitchState extends State<MotorSwitch> {
+  bool _isSwitched = true;
   double add_height = 65;
   @override
   Widget build(BuildContext context) {
@@ -52,19 +57,19 @@ class MotorSwitch extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                   height: 1),
             )),
-        Positioned(
-            top: 726 + add_height,
-            left: 320,
-            child: const Text(
-              'ON',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  color: Color.fromRGBO(255, 255, 255, 1),
-                  fontFamily: 'WorkSans',
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  height: 1),
-            )),
+        // Positioned(
+        //     top: 726 + add_height,
+        //     left: 320,
+        //     child: const Text(
+        //       'ON',
+        //       textAlign: TextAlign.left,
+        //       style: TextStyle(
+        //           color: Color.fromRGBO(255, 255, 255, 1),
+        //           fontFamily: 'WorkSans',
+        //           fontSize: 20,
+        //           fontWeight: FontWeight.w600,
+        //           height: 1),
+        //     )),
         Positioned(
             top: 679 + add_height,
             left: 42,
@@ -79,33 +84,68 @@ class MotorSwitch extends StatelessWidget {
             )
         ),
         Positioned(
-              top: 680 + add_height,
-              left: 300,
-              child: Container(
-            width: 66,
-            height: 36,
+          top: 690 + add_height,
+          left: 250,
+          child: LiteRollingSwitch(
+            value: _isSwitched,
+            width: 110,
+            textOn: 'ON',
+            textOff: 'OFF',
+            colorOn: Colors.blueAccent.shade700,
+            colorOff: Colors.lightBlue.shade300,
+            iconOn: Icons.power,
+            iconOff: Icons.power_off,
+            textSize: 14.0,
+
+            // REQUIRED in v1.0.x
+            onTap: () {},
+            onDoubleTap: () {},
+            onSwipe: () {},
+
+            onChanged: (bool state) {
+              setState(() {
+                _isSwitched = state;
+              });
+
+              print('Motor is: $state');
+            },
+          ),
+        ),
 
 
-                  decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(31),
-                  topRight: Radius.circular(31),
-                  bottomLeft: Radius.circular(31),
-                  bottomRight: Radius.circular(31),
-                  ),
-                  color: Colors.blueAccent
-                  // gradient: LinearGradient(
-                  // begin: Alignment.topCenter,
-                  // end: Alignment.bottomCenter,
-                  // colors: [
-                  // Color.fromRGBO(4, 70, 161, 0.745),
-                  // Color.fromRGBO(5, 32, 161, 1),
-                  // Color.fromRGBO(4, 32, 161, 1),
-                  // Color.fromRGBO(10, 8, 161, 1)
-                  //]
-                  ),
-        )
-                  )
+        // Positioned(
+        //       top: 680 + add_height,
+        //       left: 300,
+        //       child: Container(
+        //     width: 66,
+        //     height: 36,
+        //
+        //
+        //           decoration: const BoxDecoration(
+        //           borderRadius: BorderRadius.only(
+        //           topLeft: Radius.circular(31),
+        //           topRight: Radius.circular(31),
+        //           bottomLeft: Radius.circular(31),
+        //           bottomRight: Radius.circular(31),
+        //           ),
+        //           color: Colors.blueAccent
+        //
+        //           // gradient: LinearGradient(
+        //           // begin: Alignment.topCenter,
+        //           // end: Alignment.bottomCenter,
+        //           // colors: [
+        //           // Color.fromRGBO(4, 70, 161, 0.745),
+        //           // Color.fromRGBO(5, 32, 161, 1),
+        //           // Color.fromRGBO(4, 32, 161, 1),
+        //           // Color.fromRGBO(10, 8, 161, 1)
+        //           //]
+        //           ),
+        // )
+        //           )
+      ],
+    );
+  }
+}
         //)
         // Positioned(
         //     top: 680 + add_height,
@@ -163,10 +203,10 @@ class MotorSwitch extends StatelessWidget {
         //           color: Color.fromRGBO(144, 202, 255, 1),
         //           thickness: 1.7999999523162842),
         //     )),
-      ],
-    );
-  }
-}
+//       ],
+//     );
+//   }
+// }
 
       // Figma Flutter Generator Group13Widget - GROUP
  /*     Container(
