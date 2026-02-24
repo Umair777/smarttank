@@ -9,6 +9,7 @@ final mqttService = MQTTService();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await mqttService.connect();
+  mqttService.subscribeTankLevel();
 
   runApp(
     const ProviderScope(
