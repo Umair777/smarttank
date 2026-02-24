@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smarttank/dashboard.dart';
 import 'dart:math' as math;
-//import 'package:flutter/GoogleFonts';
 
-void main() {
+import 'mqtt_service.dart';
+//import 'package:flutter/GoogleFonts';
+final mqttService = MQTTService();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await mqttService.connect();
+
   runApp(
     const ProviderScope(
       child: MyApp(),
