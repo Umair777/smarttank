@@ -49,14 +49,14 @@ class _WaterUpdaterState extends State<WaterUpdater> {
     _fillingAnimation?.reset();
   }
 
-  void _startAnimation(WidgetRef ref) {
+  void _startAnimation(int tankLevel) {
     _fillingAnimation?.isActive = true;
     _animationTimer?.cancel();
 
-    final tankLevel = ref.watch(tankLevelProvider);
-    // I want to check what value I am getting
+    // final tankLevel = ref.watch(tankLevelProvider);
+    // check what value we are receiving am getting in animation
 
-    print('Tank Level: $tankLevel');
+    print('Tank Level in animation: $tankLevel');
 
     double tankAnimationDuration = mapTankLevelToDuration(tankLevel);
     print('Tank Level in milis: $tankAnimationDuration');
@@ -82,7 +82,11 @@ class _WaterUpdaterState extends State<WaterUpdater> {
       builder: (context, ref, child) {
         ref.listen<int>(tankLevelProvider, (prevTankLevel, tankLevel) {
           // Handle provider value changes, if needed
-        });
+          print("Tank changed: $tankLevel");
+          _resetAnimation();
+          _startAnimation(tankLevel);
+        }
+        );
 
         return Row(
           children: [
@@ -99,8 +103,9 @@ class _WaterUpdaterState extends State<WaterUpdater> {
                       child: _artboard != null
                           ? GestureDetector(
                               onTap: () {
+                                final currentLevel = ref.read(tankLevelProvider);
                                 _resetAnimation();
-                                _startAnimation(ref);
+                                _startAnimation(currentLevel);
                               },
                               child: RiveAnimation.asset(
                                 'assets/animations/smarttank.riv',

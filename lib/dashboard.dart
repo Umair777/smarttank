@@ -66,8 +66,9 @@ class _DashboardState extends ConsumerState<Dashboard> {
                         WaterSaving(),
                         WaterConsumption(),
                         MotorSwitch(),
-                        TankLevel(),
+
                         WaterUpdater(),
+                        TankLevel(),
                         // Provide the animationDuration value here
                       ],
                     ),
