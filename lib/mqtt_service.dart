@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:mqtt_client/mqtt_client.dart';
 import 'package:mqtt_client/mqtt_server_client.dart';
 
@@ -55,7 +56,18 @@ class MQTTService {
 
   void publishMotorState(bool isOn) {
     final builder = MqttClientPayloadBuilder();
-    builder.addString(isOn ? "ON" : "OFF");
+
+    // Get current time
+    final now = DateTime.now();
+
+    // Format date + time
+    final formattedTime =
+    DateFormat('yyyy-MM-dd HH:mm:ss').format(now);
+
+    final message =
+        "${isOn ? "ON" : "OFF"} | $formattedTime";
+
+    builder.addString(message);
 
     client.publishMessage(
       'smarttank/motor',
@@ -63,6 +75,6 @@ class MQTTService {
       builder.payload!,
     );
 
-    print("Published: ${isOn ? "ON" : "OFF"}");
+    print("Published: $message");
   }
 }

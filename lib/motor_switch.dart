@@ -19,7 +19,7 @@ class _MotorSwitchState extends State<MotorSwitch> {
         //Consumption Container
 
         Positioned(
-            top: 668 + 67,
+            top: 668 + 57,
             left: 26,
             child: Container(
                 width: 356,
@@ -45,8 +45,8 @@ class _MotorSwitchState extends State<MotorSwitch> {
                 ))),
 
         Positioned(
-            top: 731 + add_height,
-            left: 40,
+            top: 721 + add_height,
+            left: 52,
             child: const Text(
               'Motor',
               textAlign: TextAlign.left,
@@ -60,8 +60,8 @@ class _MotorSwitchState extends State<MotorSwitch> {
                   height: 1),
             )),
         Positioned(
-            top: 679 + add_height,
-            left: 42,
+            top: 669 + add_height,
+            left: 42+10,
             child: Container(
                 width: 57,
                 height: 44,
@@ -73,7 +73,7 @@ class _MotorSwitchState extends State<MotorSwitch> {
             )
         ),
         Positioned(
-          top: 690 + add_height,
+          top: 680 + add_height,
           left: 250,
           child: LiteRollingSwitch(
             value: _isSwitched,

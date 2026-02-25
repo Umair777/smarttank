@@ -118,7 +118,7 @@ class _WaterUpdaterState extends State<WaterUpdater> {
                     ),
                   ),
                   Positioned(
-                    top: 703,
+                    top: 700,
                     left: 171,
                     child: const Text(
                       'Tap to refresh',
@@ -126,7 +126,7 @@ class _WaterUpdaterState extends State<WaterUpdater> {
                       style: TextStyle(
                         color: Color.fromRGBO(255, 255, 255, 1),
                         fontFamily: 'WorkSans',
-                        fontSize: 12,
+                        fontSize: 14,
                         letterSpacing: 0,
                         fontWeight: FontWeight.normal,
                         height: 1,
