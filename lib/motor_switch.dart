@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+import 'mqtt_service.dart';
+import 'main.dart';
+class MotorSwitch extends StatefulWidget {
+  @override
+  _MotorSwitchState createState() => _MotorSwitchState();
+}
 
-class MotorSwitch extends StatelessWidget {
-  bool _isSwitched = false;
+class _MotorSwitchState extends State<MotorSwitch> {
+  bool _isSwitched = true;
   double add_height = 65;
   @override
   Widget build(BuildContext context) {
@@ -12,7 +19,7 @@ class MotorSwitch extends StatelessWidget {
         //Consumption Container
 
         Positioned(
-            top: 668 + 67,
+            top: 668 + 57,
             left: 26,
             child: Container(
                 width: 356,
@@ -33,12 +40,13 @@ class MotorSwitch extends StatelessWidget {
                         Color.fromRGBO(5, 32, 86, 1),
                         Color.fromRGBO(4, 24, 65, 1),
                         Color.fromRGBO(1, 8, 27, 1)
-                      ]),
+                      ]
+                  ),
                 ))),
 
         Positioned(
-            top: 731 + add_height,
-            left: 40,
+            top: 721 + add_height,
+            left: 52,
             child: const Text(
               'Motor',
               textAlign: TextAlign.left,
@@ -52,21 +60,8 @@ class MotorSwitch extends StatelessWidget {
                   height: 1),
             )),
         Positioned(
-            top: 726 + add_height,
-            left: 320,
-            child: const Text(
-              'ON',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  color: Color.fromRGBO(255, 255, 255, 1),
-                  fontFamily: 'WorkSans',
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  height: 1),
-            )),
-        Positioned(
-            top: 679 + add_height,
-            left: 42,
+            top: 669 + add_height,
+            left: 42+10,
             child: Container(
                 width: 57,
                 height: 44,
@@ -74,66 +69,43 @@ class MotorSwitch extends StatelessWidget {
                   image: DecorationImage(
                       image: AssetImage('assets/images/Motor3.png'),
                       fit: BoxFit.fitWidth),
-                ))),
+                )
+            )
+        ),
+        Positioned(
+          top: 680 + add_height,
+          left: 250,
+          child: LiteRollingSwitch(
+            value: _isSwitched,
+            width: 110,
+            textOn: 'ON',
+            textOff: 'OFF',
+            colorOn: Colors.blueAccent.shade700,
+            textOnColor: Colors.white,
+            colorOff: Colors.grey,
+            textOffColor: Colors.white,
+            iconOn: Icons.power,
+            iconOff: Icons.power_off,
+            textSize: 14.0,
 
-        // Positioned(
-        //     top: 610,
-        //     left: 51,
-        //     child: Transform.rotate(
-        //       angle: 90 * (math.pi / 180),
-        //       child: Divider(
-        //           color: Color.fromRGBO(144, 202, 255, 1),
-        //           thickness: 1.7999999523162842),
-        //     )),
+            // REQUIRED in v1.0.x
+            onTap: () {},
+            onDoubleTap: () {},
+            onSwipe: () {},
+
+            onChanged: (bool state) {
+              setState(() {
+                _isSwitched = state;
+              });
+
+              print('Motor is: $state');
+              mqttService.publishMotorState(state);
+            },
+          ),
+        ),
       ],
     );
   }
 }
 
-      // Figma Flutter Generator Group13Widget - GROUP
- /*     Container(
-      width: 390,
-      height: 844,
-      
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-        top: 0,
-        left: 0,
-        child: Container(
-      width: 390,
-      height: 844,
-      decoration: BoxDecoration(
-          color : Color.fromRGBO(0, 0, 0, 1),
-  ),
-      child: Stack(
-        children: <Widget>[
-          Positioned(
-        top: 428,
-        left: 31,
-        child: Container(
-        width: 187,
-        height: 224,
-        decoration: BoxDecoration(
-          borderRadius : BorderRadius.only(
-            topLeft: Radius.circular(31),
-            topRight: Radius.circular(31),
-            bottomLeft: Radius.circular(31),
-            bottomRight: Radius.circular(31),
-          ),
-      gradient : LinearGradient(
-          begin: Alignment(6.123234262925839e-17,1),
-          end: Alignment(-1,6.123234262925839e-17),
-          colors: [Color.fromRGBO(5, 105, 255, 0.75),Color.fromRGBO(9, 45, 116, 1),Color.fromRGBO(1, 17, 60, 1)]
-        ),
-  )
-      )
-      ),
-        ]
-      )
-    )
-      ),
-        ]
-      )
-    )
-    */
+
