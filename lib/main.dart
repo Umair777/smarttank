@@ -51,17 +51,23 @@ class AuthGate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final session = Supabase.instance.client.auth.currentSession;
-    
-    // Correct way to print with a variable in Dart:
-    print('current session: $session');
+    return StreamBuilder<AuthState>(
+      stream: Supabase.instance.client.auth.onAuthStateChange,
+      builder: (context, snapshot) {
 
-    if (session != null) {
-      print('session is active, going to dashboard');
-      return Dashboard();
-    } else {
-      print('session is not active, going to login');
-      return const LoginPage();
-    }
+        final session = Supabase.instance.client.auth.currentSession;
+
+        print("Auth stream triggered");
+        print("Current session: $session");
+
+        if (session != null) {
+          print("session active → dashboard");
+          return Dashboard();
+        } else {
+          print("session null → login");
+          return const LoginPage();
+        }
+      },
+    );
   }
 }
