@@ -4,9 +4,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'dashboard.dart';
 import 'login_page.dart';
-import 'mqtt_service.dart';
-
-final mqttService = MQTTService();
+// import 'mqtt_service.dart';
+//
+// final mqttService = MQTTService();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,11 +17,9 @@ Future<void> main() async {
     anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqdnhiamF6aGJzemxjb2dsamxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1NzY0NDQsImV4cCI6MjA4ODE1MjQ0NH0.JiXBqMywjlWYuqphjBiAqxCTlLAnUFwT-1zKJCGDSpc',
   );
 
-  // ✅ Connect MQTT
-  // Note: If this takes too long, it might cause a black screen at startup.
-  // Consider moving this inside the app or removing 'await' if it's not critical for the first frame.
-  await mqttService.connect();
-  mqttService.subscribeTankLevel();
+ //  // ✅ Connect MQTT
+ // await mqttService.connect();
+ //  mqttService.subscribeTankLevel();
 
   runApp(
     const ProviderScope(
