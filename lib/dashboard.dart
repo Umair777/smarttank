@@ -7,6 +7,8 @@ import 'package:smarttank/water_animation.dart';
 import 'background.dart';
 import 'consumption_graph.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'login_page.dart';
 
 import 'main.dart';
 class Dashboard extends ConsumerStatefulWidget {
@@ -72,6 +74,21 @@ class _DashboardState extends ConsumerState<Dashboard> {
                         // Provide the animationDuration value here
                       ],
                     ),
+                  ),
+                ),
+                Positioned(
+                  top: 40,
+                  right: 20,
+                  child: IconButton(
+                    icon: const Icon(Icons.logout, color: Colors.white),
+                    onPressed: () async {
+                      await Supabase.instance.client.auth.signOut();
+
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => LoginPage()),
+                      );
+                    },
                   ),
                 ),
               ],

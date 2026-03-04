@@ -11,15 +11,10 @@ final mqttService = MQTTService();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // ✅ Initialize Supabase
   await Supabase.initialize(
-    url: 'https://YOUR_PROJECT_ID.supabase.co',
-    anonKey: 'YOUR_PUBLIC_ANON_KEY',
+    url: 'https://fjvxbjazhbszlcogljlp.supabase.co',
+    anonKey: 'YOUR_KEY',
   );
-
-  // ✅ Connect MQTT
-  await mqttService.connect();
-  mqttService.subscribeTankLevel();
 
   runApp(
     const ProviderScope(
@@ -27,7 +22,6 @@ Future<void> main() async {
     ),
   );
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -38,9 +32,11 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'WorkSans',
+        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.white,
       ),
-      home: const AuthGate(), // 🔥 IMPORTANT
+      // home: const AuthGate(),
+      home: const LoginPage(),
     );
   }
 }
@@ -51,12 +47,27 @@ class AuthGate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final session = Supabase.instance.client.auth.currentSession;
+    return StreamBuilder<AuthState>(
+      stream: Supabase.instance.client.auth.onAuthStateChange,
+      builder: (context, snapshot) {
+        // While waiting for initial auth state, show a loader
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+            backgroundColor: Colors.white,
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
 
-    if (session != null) {
-      return Dashboard();
-    } else {
-      return LoginPage();
-    }
+        final session = Supabase.instance.client.auth.currentSession;
+
+        if (session != null) {
+          print("going to dashboard");
+          return Dashboard();
+        } else {
+          print("going to login");
+          return const LoginPage();
+        }
+      },
+    );
   }
 }
