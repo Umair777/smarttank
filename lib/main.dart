@@ -11,10 +11,17 @@ final mqttService = MQTTService();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // ✅ Initialize Supabase
   await Supabase.initialize(
     url: 'https://fjvxbjazhbszlcogljlp.supabase.co',
-    anonKey: 'YOUR_KEY',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqdnhiamF6aGJzemxjb2dsamxwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI1NzY0NDQsImV4cCI6MjA4ODE1MjQ0NH0.JiXBqMywjlWYuqphjBiAqxCTlLAnUFwT-1zKJCGDSpc',
   );
+
+  // ✅ Connect MQTT
+  // Note: If this takes too long, it might cause a black screen at startup.
+  // Consider moving this inside the app or removing 'await' if it's not critical for the first frame.
+  await mqttService.connect();
+  mqttService.subscribeTankLevel();
 
   runApp(
     const ProviderScope(
@@ -22,6 +29,7 @@ Future<void> main() async {
     ),
   );
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -32,11 +40,9 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        useMaterial3: true,
-        scaffoldBackgroundColor: Colors.white,
+        fontFamily: 'WorkSans',
       ),
-      // home: const AuthGate(),
-      home: const LoginPage(),
+      home: const AuthGate(), // 🔥 IMPORTANT
     );
   }
 }
@@ -47,27 +53,17 @@ class AuthGate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<AuthState>(
-      stream: Supabase.instance.client.auth.onAuthStateChange,
-      builder: (context, snapshot) {
-        // While waiting for initial auth state, show a loader
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Scaffold(
-            backgroundColor: Colors.white,
-            body: Center(child: CircularProgressIndicator()),
-          );
-        }
+    final session = Supabase.instance.client.auth.currentSession;
+    
+    // Correct way to print with a variable in Dart:
+    print('current session: $session');
 
-        final session = Supabase.instance.client.auth.currentSession;
-
-        if (session != null) {
-          print("going to dashboard");
-          return Dashboard();
-        } else {
-          print("going to login");
-          return const LoginPage();
-        }
-      },
-    );
+    if (session != null) {
+      print('session is active, going to dashboard');
+      return Dashboard();
+    } else {
+      print('session is not active, going to login');
+      return const LoginPage();
+    }
   }
 }
