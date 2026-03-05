@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'mqtt_service.dart';
 import 'main.dart';
-class MotorSwitch extends StatefulWidget {
+import 'providers/mqtt_provider.dart';
+class MotorSwitch extends ConsumerStatefulWidget {
   @override
   _MotorSwitchState createState() => _MotorSwitchState();
 }
 
-class _MotorSwitchState extends State<MotorSwitch> {
+class _MotorSwitchState extends ConsumerState<MotorSwitch> {
   bool _isSwitched = true;
   double add_height = 65;
   @override
@@ -99,6 +101,7 @@ class _MotorSwitchState extends State<MotorSwitch> {
               });
 
               print('Motor is: $state');
+              final mqttService = ref.read(mqttProvider);
               mqttService.publishMotorState(state);
             },
           ),

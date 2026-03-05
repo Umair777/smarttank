@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smarttank/motor_switch.dart';
+import 'package:smarttank/providers/mqtt_provider.dart';
 import 'package:smarttank/savings.dart';
 import 'package:smarttank/sensor.dart';
 import 'package:smarttank/tank_level.dart';
@@ -7,6 +8,10 @@ import 'package:smarttank/water_animation.dart';
 import 'background.dart';
 import 'consumption_graph.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'login_page.dart';
+import 'mqtt_service.dart';
+
 
 import 'main.dart';
 class Dashboard extends ConsumerStatefulWidget {
@@ -15,17 +20,31 @@ class Dashboard extends ConsumerStatefulWidget {
 }
 
 class _DashboardState extends ConsumerState<Dashboard> {
-
+  late MQTTService mqttService;
   @override
   void initState() {
     super.initState();
 
-    // Register callback
+    // Get provider instance
+    mqttService = ref.read(mqttProvider);
+
+    _initializeMQTT();
+  }
+
+  // Register callback
+  Future<void> _initializeMQTT() async {
+    await mqttService.connect();
+    mqttService.subscribeTankLevel();
+
     mqttService.onTankLevelReceived = (int level) {
       ref.read(tankLevelProvider.notifier).state = level;
     };
   }
-
+  @override
+  void dispose() {
+    mqttService.client.disconnect(); // 🔥 Prevent memory leaks
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -72,6 +91,21 @@ class _DashboardState extends ConsumerState<Dashboard> {
                         // Provide the animationDuration value here
                       ],
                     ),
+                  ),
+                ),
+                Positioned(
+                  top: 40,
+                  right: 20,
+                  child: IconButton(
+                    icon: const Icon(Icons.logout, color: Colors.white),
+                    onPressed: () async {
+                      await Supabase.instance.client.auth.signOut();
+
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => LoginPage()),
+                      );
+                    },
                   ),
                 ),
               ],
