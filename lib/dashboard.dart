@@ -99,25 +99,25 @@ class _DashboardState extends ConsumerState<Dashboard> {
             ),
           ),
 
-          /// QUICK LOGOUT BUTTON (optional)
-          Positioned(
-            top: 100,
-            right: 20,
-            child: IconButton(
-              icon: const Icon(Icons.logout, color: Colors.white),
-              onPressed: () async {
-
-                await Supabase.instance.client.auth.signOut();
-
-                if (mounted) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (_) => const LoginPage()),
-                  );
-                }
-              },
-            ),
-          ),
+          // /// QUICK LOGOUT BUTTON (optional)
+          // Positioned(
+          //   top: 100,
+          //   right: 20,
+          //   child: IconButton(
+          //     icon: const Icon(Icons.logout, color: Colors.white),
+          //     onPressed: () async {
+          //
+          //       await Supabase.instance.client.auth.signOut();
+          //
+          //       if (mounted) {
+          //         Navigator.pushReplacement(
+          //           context,
+          //           MaterialPageRoute(builder: (_) => const LoginPage()),
+          //         );
+          //       }
+          //     },
+          //   ),
+          // ),
         ],
       ),
     );
