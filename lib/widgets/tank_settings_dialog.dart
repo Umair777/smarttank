@@ -24,87 +24,93 @@ void showTankSettingsDialog(BuildContext context) {
               style: TextStyle(color: Colors.white),
             ),
 
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
 
-                /// ---------- TANK CAPACITY ----------
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Tank Capacity",
-                    style: TextStyle(color: Colors.white70),
-                  ),
-                ),
+                  /// IMAGE + HEIGHT SLIDER
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
 
-                const SizedBox(height: 8),
+                      /// TANK IMAGE WITH CENTER INPUT
+                      Expanded(
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
 
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: capacityController,
-                        keyboardType: TextInputType.number,
-                        style: const TextStyle(color: Colors.white),
+                            Image.asset(
+                              'assets/images/Motor3.png',   // your tank image
+                              height: 180,
+                            ),
+
+                            /// CENTER CAPACITY INPUT
+                            SizedBox(
+                              width: 90,
+                              child: TextField(
+                                controller: capacityController,
+                                keyboardType: TextInputType.number,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(color: Colors.white),
+                                decoration: const InputDecoration(
+                                  filled: true,
+                                  fillColor: Color.fromRGBO(0, 0, 0, 0.5),
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text("L", style: TextStyle(color: Colors.white)),
-                  ],
-                ),
 
-                Slider(
-                  min: 250,
-                  max: 1500,
-                  value: tankCapacity,
-                  onChanged: (value) {
-                    setState(() {
-                      tankCapacity = value;
-                      capacityController.text = value.toInt().toString();
-                    });
-                  },
-                ),
+                      const SizedBox(width: 10),
 
-                const SizedBox(height: 20),
+                      /// HEIGHT SLIDER
+                      Column(
+                        children: [
 
-                /// ---------- TANK HEIGHT ----------
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Tank Height",
-                    style: TextStyle(color: Colors.white70),
+                          RotatedBox(
+                            quarterTurns: -1,
+                            child: Slider(
+                              min: 50,
+                              max: 300,
+                              value: tankHeight,
+                              onChanged: (value) {
+                                setState(() {
+                                  tankHeight = value;
+                                  heightController.text =
+                                      value.toInt().toString();
+                                });
+                              },
+                            ),
+                          ),
+
+                          Text(
+                            "${tankHeight.toInt()} cm",
+                            style: const TextStyle(color: Colors.white),
+                          )
+                        ],
+                      )
+                    ],
                   ),
-                ),
 
-                const SizedBox(height: 8),
+                  const SizedBox(height: 20),
 
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: heightController,
-                        keyboardType: TextInputType.number,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text("cm", style: TextStyle(color: Colors.white)),
-                  ],
-                ),
-
-                Slider(
-                  min: 50,
-                  max: 300,
-                  value: tankHeight,
-                  onChanged: (value) {
-                    setState(() {
-                      tankHeight = value;
-                      heightController.text = value.toInt().toString();
-                    });
-                  },
-                ),
-              ],
-            ),
+                  /// CAPACITY SLIDER
+                  Slider(
+                    min: 250,
+                    max: 1500,
+                    value: tankCapacity,
+                    onChanged: (value) {
+                      setState(() {
+                        tankCapacity = value;
+                        capacityController.text =
+                            value.toInt().toString();
+                      });
+                    },
+                  ),
+                ],
+              ),
 
             actions: [
               TextButton(
