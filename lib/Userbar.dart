@@ -11,12 +11,12 @@ class Userbar extends StatelessWidget {
   Widget build(BuildContext context) {
 
     var dateTime = DateTime.now();
-    String formattedDate = DateFormat('EEEE h:mm a').format(dateTime);
+    String formattedDate =
+    DateFormat('EEEE h:mm a').format(dateTime);
 
     return Stack(
       children: [
 
-        /// USER IMAGE (opens sidebar)
         Positioned(
           top: 48,
           left: MediaQuery.of(context).size.width - 70,
@@ -29,7 +29,9 @@ class Userbar extends StatelessWidget {
               height: 59,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/Pngegg1.png'),
+                  image: AssetImage(
+                    'assets/images/Pngegg1.png',
+                  ),
                   fit: BoxFit.fitWidth,
                 ),
               ),
@@ -37,7 +39,6 @@ class Userbar extends StatelessWidget {
           ),
         ),
 
-        /// DATE + TIME
         Positioned(
           top: 83,
           left: 28,
@@ -51,7 +52,6 @@ class Userbar extends StatelessWidget {
           ),
         ),
 
-        /// GREETING TEXT
         const Positioned(
           top: 38,
           left: 28,

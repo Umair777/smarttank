@@ -12,6 +12,7 @@ import 'water_animation.dart';
 import 'consumption_graph.dart';
 import 'login_page.dart';
 import 'mqtt_service.dart';
+import 'drawer.dart';
 
 class Dashboard extends ConsumerStatefulWidget {
   const Dashboard({super.key});
@@ -61,70 +62,7 @@ class _DashboardState extends ConsumerState<Dashboard> {
 
       backgroundColor: const Color.fromRGBO(0, 0, 0, 1),
 
-      drawer: Drawer(
-        backgroundColor: const Color.fromRGBO(1, 8, 27, 1),
-        child: Column(
-          children: [
-
-            const SizedBox(height: 80),
-
-            const CircleAvatar(
-              radius: 40,
-              backgroundImage: AssetImage('assets/images/Pngegg1.png'),
-            ),
-
-            const SizedBox(height: 10),
-
-            Text(
-              Supabase.instance.client.auth.currentUser?.email ?? "",
-              style: const TextStyle(color: Colors.white),
-            ),
-
-            const SizedBox(height: 40),
-
-            ListTile(
-              leading: const Icon(Icons.settings, color: Colors.white),
-              title: const Text(
-                "Tank Settings",
-                style: TextStyle(color: Colors.white),
-              ),
-              onTap: () {},
-            ),
-
-            ListTile(
-              leading: const Icon(Icons.water_drop, color: Colors.white),
-              title: const Text(
-                "Water Parameters",
-                style: TextStyle(color: Colors.white),
-              ),
-              onTap: () {},
-            ),
-
-            const Spacer(),
-
-            ListTile(
-              leading: const Icon(Icons.logout, color: Colors.red),
-              title: const Text(
-                "Logout",
-                style: TextStyle(color: Colors.red),
-              ),
-              onTap: () async {
-
-                await Supabase.instance.client.auth.signOut();
-
-                if (mounted) {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (_) => const LoginPage()),
-                  );
-                }
-              },
-            ),
-
-            const SizedBox(height: 40),
-          ],
-        ),
-      ),
+      drawer: const AppDrawer(),
 
       body: Stack(
         children: [
