@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:smarttank/widgets/tank_settings_dialog.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'Userbar.dart';
@@ -91,7 +92,12 @@ class _DashboardState extends ConsumerState<Dashboard> {
                 MotorSwitch(),
 
                 /// WATER ANIMATION
-                WaterUpdater(),
+                GestureDetector(
+                  onLongPress: () {
+                    showTankSettingsDialog(context);
+                  },
+                  child: WaterUpdater(),
+                ),
 
                 /// TANK LEVEL
                 TankLevel(),
@@ -99,25 +105,7 @@ class _DashboardState extends ConsumerState<Dashboard> {
             ),
           ),
 
-          // /// QUICK LOGOUT BUTTON (optional)
-          // Positioned(
-          //   top: 100,
-          //   right: 20,
-          //   child: IconButton(
-          //     icon: const Icon(Icons.logout, color: Colors.white),
-          //     onPressed: () async {
-          //
-          //       await Supabase.instance.client.auth.signOut();
-          //
-          //       if (mounted) {
-          //         Navigator.pushReplacement(
-          //           context,
-          //           MaterialPageRoute(builder: (_) => const LoginPage()),
-          //         );
-          //       }
-          //     },
-          //   ),
-          // ),
+
         ],
       ),
     );

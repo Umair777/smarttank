@@ -29,78 +29,90 @@ void showTankSettingsDialog(BuildContext context) {
                 children: [
 
                   /// IMAGE + HEIGHT SLIDER
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
+                  SizedBox(
+                    height: 200,
+                    child: Stack(
+                      children: [
 
-                      /// TANK IMAGE WITH CENTER INPUT
-                      Expanded(
-                        child: Stack(
+                        /// TANK IMAGE CENTER
+                        Align(
                           alignment: Alignment.center,
-                          children: [
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
 
-                            Image.asset(
-                              'assets/images/overflow_tank.png',   // your tank image
-                              height: 180,
-                            ),
-
-                            /// CENTER CAPACITY INPUT
-                            SizedBox(
-                              width: 90,
-                              child: TextField(
-                                controller: capacityController,
-                                keyboardType: TextInputType.number,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(color: Colors.white),
-                                // decoration: const InputDecoration(
-                                //   filled: false,
-                                //   fillColor: Color.fromRGBO(0, 0, 0, 0.5),
-                                  // border: OutlineInputBorder(),
-                                // ),
+                              Image.asset(
+                                'assets/images/overflow_tank.png',
+                                height: 180,
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
 
-                      const SizedBox(width: 10),
-
-                      /// HEIGHT SLIDER
-                      Column(
-                        children: [
-
-                          RotatedBox(
-                            quarterTurns: -1,
-                            child: Slider(
-                              min: 50,
-                              max: 300,
-                              value: tankHeight,
-                              onChanged: (value) {
-                                setState(() {
-                                  tankHeight = value;
-                                  heightController.text =
-                                      value.toInt().toString();
-                                });
-                              },
-                            ),
+                              /// CAPACITY INPUT IN CENTER
+                              SizedBox(
+                                width: 90,
+                                child: TextField(
+                                  controller: capacityController,
+                                  keyboardType: TextInputType.number,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ],
                           ),
+                        ),
 
-                          Text(
-                            "${tankHeight.toInt()} cm",
-                            style: const TextStyle(color: Colors.white),
-                          )
-                        ],
-                      )
-                    ],
+                        /// VERTICAL HEIGHT SLIDER
+                        Positioned(
+                          right: -20,
+                          top: 10,
+                          bottom: 10,
+                          child: Column(
+                            children: [
+
+                              const Text(
+                                "Overflow Height",
+                                style: TextStyle(color: Colors.white70, fontSize: 12),
+                              ),
+
+                              Expanded(
+                                child: RotatedBox(
+                                  quarterTurns: -1,
+                                  child: Slider(
+                                    min: 50,
+                                    max: 300,
+                                    value: tankHeight,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        tankHeight = value;
+                                        heightController.text =
+                                            value.toInt().toString();
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+
+                              Text(
+                                "${tankHeight.toInt()} cm",
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+                  const SizedBox(height: 20),
 
+                  /// CAPACITY SLIDER
                   const SizedBox(height: 20),
 
                   /// CAPACITY SLIDER
                   Slider(
-                    min: 250,
-                    max: 1500,
+                    min: 0,
+                    max: 2000,
+                    divisions: 8, // 0,250,500,750,1000,1250,1500,1750,2000
                     value: tankCapacity,
+                    label: "${tankCapacity.toInt()} L",
                     onChanged: (value) {
                       setState(() {
                         tankCapacity = value;
@@ -108,6 +120,15 @@ void showTankSettingsDialog(BuildContext context) {
                             value.toInt().toString();
                       });
                     },
+                  ),
+
+                  /// TANK VOLUME LABEL
+                  const Text(
+                    "Tank Volume",
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 14,
+                    ),
                   ),
                 ],
               ),
