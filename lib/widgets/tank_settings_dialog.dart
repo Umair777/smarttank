@@ -35,24 +35,28 @@ void showTankSettingsDialog(BuildContext context) {
 
                 /// TANK + HEIGHT SCALE
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
 
-                    TankImageWidget(
-                      capacityController: capacityController,
+                    Expanded(
+                      flex: 2,
+                      child: TankImageWidget(
+                        capacityController: capacityController,
+                      ),
                     ),
 
-                    const SizedBox(width: 20),
-
-                    OverflowHeightScale(
-                      heightController: heightController,
-                      heightValue: tankHeight,
-                      onChanged: (h) {
-                        setState(() {
-                          tankHeight = h;
-                        });
-                      },
+                    Expanded(
+                      flex: 1,
+                      child: OverflowHeightScale(
+                        heightController: heightController,
+                        heightValue: tankHeight,
+                        onChanged: (h) {
+                          setState(() {
+                            tankHeight = h;
+                          });
+                        },
+                      ),
                     ),
+
                   ],
                 ),
 
@@ -68,18 +72,12 @@ void showTankSettingsDialog(BuildContext context) {
                     });
                   },
                 ),
-
-                // const Text(
-                //   "Tank Volume",
-                //   style: TextStyle(
-                //     color: Colors.white70,
-                //     fontSize: 14,
-                //   ),
-                // ),
+                const SizedBox(height: 10),
               ],
             ),
 
             actions: [
+
 
               TextButton(
                 onPressed: () {

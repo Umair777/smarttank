@@ -20,8 +20,9 @@ class OverflowHeightScale extends StatelessWidget {
       children: [
 
         const Text(
-          "Set Overflow Height",
-          style: TextStyle(color: Colors.white70, fontSize: 12),
+
+          "Overflow Height",
+          style: TextStyle(color: Colors.white70, fontSize: 18),
         ),
 
         const SizedBox(height: 6),
@@ -48,19 +49,57 @@ class OverflowHeightScale extends StatelessWidget {
 
         const SizedBox(height: 10),
 
-        SizedBox(
-          height: 180,
-          child: RotatedBox(
-            quarterTurns: -1,
-            child: Slider(
-              min: 0,
-              max: heightValue,
-              value: heightValue,
-              onChanged: null, // scale only
+        /// SCALE BRACKET
+        Positioned(
+          right: 0,
+          top: -3,
+          child: SizedBox(
+            height: 180,
+            child: CustomPaint(
+              size: const Size(20, 180),
+              painter: OverflowScalePainter(),
             ),
           ),
         ),
       ],
     );
   }
+}
+
+class OverflowScalePainter extends CustomPainter {
+
+  @override
+  void paint(Canvas canvas, Size size) {
+
+    final paint = Paint()
+      ..color = Colors.white70
+      ..strokeWidth = 2
+      ..style = PaintingStyle.stroke;
+
+    double x = size.width - 2; // vertical line position
+
+    /// vertical line
+    canvas.drawLine(
+      Offset(x, 0),
+      Offset(x, size.height),
+      paint,
+    );
+
+    /// top bracket (pointing left)
+    canvas.drawLine(
+      Offset(x, 0),
+      Offset(0, 0),
+      paint,
+    );
+
+    /// bottom bracket (pointing left)
+    canvas.drawLine(
+      Offset(x, size.height),
+      Offset(0, size.height),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }

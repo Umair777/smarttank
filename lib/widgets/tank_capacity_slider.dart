@@ -27,7 +27,7 @@ class TankCapacitySlider extends StatelessWidget {
         ),
 
         const Text(
-          "Slide to the desired Tank Volume",
+          "Total Tank Volume",
           style: TextStyle(color: Colors.white70),
         ),
 

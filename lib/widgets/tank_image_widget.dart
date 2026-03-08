@@ -31,18 +31,44 @@ class TankImageWidget extends StatelessWidget {
 
           /// CENTER INPUT
           Positioned(
-            left: 35,
-            top: 70,
-            child: SizedBox(
-              width: 80,
-              child: TextField(
-                controller: capacityController,
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.white),
-              ),
+            left: 50,
+            top: 120,
+            child: Row(
+              children: [
+
+                SizedBox(
+                  width: 60,
+                  child: TextField(
+                    controller: capacityController,
+                    keyboardType: TextInputType.number,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 21,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    decoration: const InputDecoration(
+                      isDense: true,
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+
+                // const SizedBox(width: 4),
+
+                const Text(
+                  "L",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+
+                  ),
+                ),
+
+              ],
             ),
-          ),
+          )
 
         ],
       ),
