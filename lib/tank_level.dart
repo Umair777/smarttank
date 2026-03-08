@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final tankLevelProvider = StateProvider<int>((ref) => 57);
+final tankLevelProvider = StateProvider<int>((ref) => 89);
 
 class TankLevel extends ConsumerWidget {
   @override

@@ -68,7 +68,8 @@ class AuthGate extends StatelessWidget {
           // return const LoginPage();
         } else {
           print("session null → login");
-          return const LoginPage();
+          // return const LoginPage();
+          return Dashboard();
         }
       },
     );

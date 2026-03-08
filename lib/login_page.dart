@@ -88,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: const Color.fromRGBO(1, 8, 27, 1),
       body: SafeArea(
         child: Container(
-          color: Colors.black, // FORCE WHITE
+          color: Color(0xFF002065), // FORCE WHITE
           child: Center(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(24),
@@ -104,15 +104,16 @@ class _LoginPageState extends State<LoginPage> {
                       // top: 669 + add_height,
                       // left: 42+10,
                       child: Container(
-                          width: 300,
-                          height: 300,
+                          width: 400,
+                          height: 400,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/teksnalogo.png'),
-                                fit: BoxFit.fitWidth),
+                                image: AssetImage('assets/images/smarttank_cropped_1.png'),
+                                fit: BoxFit.fill),
                           )
                       )
                   ),
+                  const SizedBox(height: 30),
                   const Text(
                     "SmartTank Login",
                     style: TextStyle(
@@ -121,12 +122,20 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.white, // FORCE VISIBLE COLOR
                     ),
                   ),
-
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 2),
+                  const Text(
+                    "Powered by Teksna Industries",
+                    style: TextStyle(
+                      fontSize: 12,
+                      // fontWeight: FontWeight.bold,
+                      color: Colors.white, // FORCE VISIBLE COLOR
+                    ),
+                  ),
+                  const SizedBox(height: 30),
 
                   Container(
                     width: 372,
-                    height: 65,
+                    height: 50,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(31)),
                       gradient: LinearGradient(
@@ -159,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
 
                   Container(
                     width: 372,
-                    height: 65,
+                    height: 50,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(31)),
                       gradient: LinearGradient(
@@ -190,12 +199,12 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
                   Container(
                     width: 372,
-                    height: 50,
+                    height: 46,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(31),
                       gradient: const LinearGradient(
                         colors: [
-                          Color(0xFF00C6FF),
+                          Color(0xFF00346E),
                           Color(0xFF0072FF),
                         ],
                       ),
