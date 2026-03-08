@@ -14,54 +14,93 @@ class OverflowHeightScale extends StatelessWidget {
   });
 
   @override
+  @override
+  @override
   Widget build(BuildContext context) {
 
-    return Column(
-      children: [
+    return SizedBox(
+      width: 140,   // increased width so it doesn't crop
+      height: 280,
 
-        const Text(
+      child: Stack(
+        children: [
 
-          "Overflow Height",
-          style: TextStyle(color: Colors.white70, fontSize: 18),
-        ),
-
-        const SizedBox(height: 6),
-
-        SizedBox(
-          width: 70,
-          child: TextField(
-            controller: heightController,
-            keyboardType: TextInputType.number,
-            textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.white),
-            decoration: const InputDecoration(
-              isDense: true,
-              border: OutlineInputBorder(),
-            ),
-            onChanged: (value) {
-              double? h = double.tryParse(value);
-              if (h != null) {
-                onChanged(h);
-              }
-            },
-          ),
-        ),
-
-        const SizedBox(height: 10),
-
-        /// SCALE BRACKET
-        Positioned(
-          right: 0,
-          top: -3,
-          child: SizedBox(
-            height: 180,
-            child: CustomPaint(
-              size: const Size(20, 180),
-              painter: OverflowScalePainter(),
+          /// HEADING
+          const Positioned(
+            top: 40,
+            left: 0,
+            child: Text(
+              "Overflow\nHeight",
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 18,
+                height: 1.2,
+              ),
             ),
           ),
-        ),
-      ],
+
+          /// SCALE BRACKET
+          Positioned(
+            left: 0,
+            top: 105,
+            child: SizedBox(
+              width: 20,
+              height: 165,
+              child: CustomPaint(
+                painter: OverflowScalePainter(),
+              ),
+            ),
+          ),
+
+          /// INPUT NUMBER
+          Positioned(
+            left: 25,
+            top: 160,
+            child: SizedBox(
+              width: 70,
+              child: TextField(
+                controller: heightController,
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+                decoration: const InputDecoration(
+                  isDense: true,
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white70),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white70),
+                  ),
+                ),
+                onChanged: (value) {
+                  double? h = double.tryParse(value);
+                  if (h != null) {
+                    onChanged(h);
+                  }
+                },
+              ),
+            ),
+          ),
+
+          /// UNIT TEXT
+          const Positioned(
+            left: 32,
+            top: 210,
+            child: Text(
+              "Inches",
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 18,
+              ),
+            ),
+          ),
+
+        ],
+      ),
     );
   }
 }

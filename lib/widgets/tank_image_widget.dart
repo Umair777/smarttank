@@ -13,7 +13,7 @@ class TankImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return SizedBox(
-      width: 350,
+      width: 300,
       height: 280,
 
       child: Stack(
@@ -22,10 +22,10 @@ class TankImageWidget extends StatelessWidget {
           /// TANK IMAGE
           Positioned(
             left: 0,
-            top: 0,
+            top: 32,
             child: Image.asset(
               'assets/images/overflow_tank.png',
-              height: 280,
+              height: 250,
             ),
           ),
 

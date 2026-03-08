@@ -26,6 +26,7 @@ void showTankSettingsDialog(BuildContext context) {
 
             title: const Text(
               "Tank Settings",
+              textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white),
             ),
 
@@ -33,6 +34,7 @@ void showTankSettingsDialog(BuildContext context) {
               mainAxisSize: MainAxisSize.min,
               children: [
 
+                // const SizedBox(height: 10),
                 /// TANK + HEIGHT SCALE
                 Row(
                   children: [
@@ -75,11 +77,12 @@ void showTankSettingsDialog(BuildContext context) {
                 const SizedBox(height: 10),
               ],
             ),
-
+            // actionsAlignment: MainAxisAlignment.center,
             actions: [
 
 
               TextButton(
+
                 onPressed: () {
                   Navigator.pop(context);
                 },
