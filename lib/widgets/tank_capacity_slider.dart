@@ -1,39 +1,36 @@
 import 'package:flutter/material.dart';
 
-class TankWidget extends StatelessWidget {
+class TankCapacitySlider extends StatelessWidget {
 
-  final TextEditingController capacityController;
+  final double tankCapacity;
+  final Function(double) onChanged;
 
-  const TankWidget({
+  const TankCapacitySlider({
     super.key,
-    required this.capacityController,
+    required this.tankCapacity,
+    required this.onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
 
-        Stack(
-          alignment: Alignment.center,
-          children: [
-
-            Image.asset(
-              'assets/images/overflow_tank.png',
-              height: 180,
-            ),
-
-            SizedBox(
-              width: 90,
-              child: TextField(
-                controller: capacityController,
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
+        Slider(
+          min: 0,
+          max: 2000,
+          divisions: 8,
+          value: tankCapacity,
+          label: "${tankCapacity.toInt()} L",
+          onChanged: onChanged,
         ),
+
+        const Text(
+          "Slide to the desired Tank Volume",
+          style: TextStyle(color: Colors.white70),
+        ),
+
       ],
     );
   }

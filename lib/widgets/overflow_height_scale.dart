@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 
-class OverflowHeightWidget extends StatelessWidget {
+class OverflowHeightScale extends StatelessWidget {
 
   final TextEditingController heightController;
-  final double tankHeight;
-  final Function(double) onHeightChanged;
+  final double heightValue;
+  final Function(double) onChanged;
 
-  const OverflowHeightWidget({
+  const OverflowHeightScale({
     super.key,
     required this.heightController,
-    required this.tankHeight,
-    required this.onHeightChanged,
+    required this.heightValue,
+    required this.onChanged,
   });
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
 
@@ -39,7 +40,7 @@ class OverflowHeightWidget extends StatelessWidget {
             onChanged: (value) {
               double? h = double.tryParse(value);
               if (h != null) {
-                onHeightChanged(h);
+                onChanged(h);
               }
             },
           ),
@@ -53,9 +54,9 @@ class OverflowHeightWidget extends StatelessWidget {
             quarterTurns: -1,
             child: Slider(
               min: 0,
-              max: tankHeight,
-              value: tankHeight,
-              onChanged: null, // visual scale only
+              max: heightValue,
+              value: heightValue,
+              onChanged: null, // scale only
             ),
           ),
         ),
