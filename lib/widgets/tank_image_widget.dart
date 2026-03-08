@@ -31,8 +31,8 @@ class TankImageWidget extends StatelessWidget {
 
           /// CENTER INPUT
           Positioned(
-            left: 50,
-            top: 120,
+            left: 40,
+            top: 160,
             child: Row(
               children: [
 
