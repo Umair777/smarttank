@@ -40,7 +40,7 @@ void showTankSettingsDialog(BuildContext context) {
                           children: [
 
                             Image.asset(
-                              'assets/images/Motor3.png',   // your tank image
+                              'assets/images/overflow_tank.png',   // your tank image
                               height: 180,
                             ),
 
@@ -52,11 +52,11 @@ void showTankSettingsDialog(BuildContext context) {
                                 keyboardType: TextInputType.number,
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(color: Colors.white),
-                                decoration: const InputDecoration(
-                                  filled: true,
-                                  fillColor: Color.fromRGBO(0, 0, 0, 0.5),
-                                  border: OutlineInputBorder(),
-                                ),
+                                // decoration: const InputDecoration(
+                                //   filled: false,
+                                //   fillColor: Color.fromRGBO(0, 0, 0, 0.5),
+                                  // border: OutlineInputBorder(),
+                                // ),
                               ),
                             ),
                           ],
