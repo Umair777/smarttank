@@ -54,7 +54,7 @@ class OverflowHeightScale extends StatelessWidget {
 
           /// INPUT NUMBER
           Positioned(
-            left: 25,
+            left: 24,
             top: 160,
             child: SizedBox(
               width: 70,
