@@ -107,12 +107,10 @@ class _WaterUpdaterState extends State<WaterUpdater> {
                                 _resetAnimation();
                                 _startAnimation(currentLevel);
                               },
-                              child: RiveAnimation.asset(
-                                'assets/animations/smarttank.riv',
-                                artboard: _artboard!.name,
-                                fit: BoxFit.cover,
-                                controllers: [_fillingAnimation!],
-                              ),
+                              child: Rive(
+                        artboard: _artboard!,
+                        fit: BoxFit.cover,
+                      ),
                             )
                           : const SizedBox(),
                     ),
