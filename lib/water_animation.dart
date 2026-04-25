@@ -81,6 +81,7 @@ class _WaterUpdaterState extends State<WaterUpdater> {
     return Consumer(
       builder: (context, ref, child) {
         ref.listen<int>(tankLevelProvider, (prevTankLevel, tankLevel) {
+          if (prevTankLevel == tankLevel) return; //  prevent duplicate triggers
           // Handle provider value changes, if needed
           print("Tank changed: $tankLevel");
           _resetAnimation();
