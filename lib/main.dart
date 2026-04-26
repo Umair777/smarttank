@@ -12,13 +12,13 @@ import 'login_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  print("Before Supabase");
   // ✅ Initialize Supabase
   await Supabase.initialize(
     url: 'https://yljggigahlagdihhycfj.supabase.co',
     anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlsamdnaWdhaGxhZ2RpaGh5Y2ZqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3MDcwNTMsImV4cCI6MjA4ODI4MzA1M30.NeGRlQv-T-OGW4iqJPLV2T-2uPQxDNz0r9GHLAG8F-g',
   );
-
+  print("After Supabase");
  //  // ✅ Connect MQTT
  // await mqttService.connect();
  //  mqttService.subscribeTankLevel();
@@ -43,6 +43,9 @@ class MyApp extends StatelessWidget {
         fontFamily: 'WorkSans',
       ),
       home: const AuthGate(), // 🔥 IMPORTANT
+      // home: Scaffold(
+      //   body: Center(child: Text("App Loaded")),
+      // ),
     );
   }
 }
@@ -64,12 +67,12 @@ class AuthGate extends StatelessWidget {
 
         if (session != null) {
           print("session active → dashboard");
-          return Dashboard();
-          // return const LoginPage();
+          // return Dashboard();
+          return const LoginPage();
         } else {
           print("session null → login");
-          // return const LoginPage();
-          return Dashboard();
+          return const LoginPage();
+          // return Dashboard();
         }
       },
     );

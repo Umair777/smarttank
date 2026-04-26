@@ -50,6 +50,7 @@ class _WaterUpdaterState extends State<WaterUpdater> {
   }
 
   void _startAnimation(int tankLevel) {
+    // if (_fillingAnimation == null) return;
     _fillingAnimation?.isActive = true;
     _animationTimer?.cancel();
 
@@ -65,7 +66,11 @@ class _WaterUpdaterState extends State<WaterUpdater> {
       () {
         setState(() {
           _fillingAnimation?.isActive = false;
-        });
+        }
+        // if (mounted) {
+        //   _fillingAnimation?.isActive = false;
+        // }
+       );
       },
     );
   }
@@ -108,10 +113,16 @@ class _WaterUpdaterState extends State<WaterUpdater> {
                                 _resetAnimation();
                                 _startAnimation(currentLevel);
                               },
-                              child: Rive(
-                        artboard: _artboard!,
+                        child: RiveAnimation.asset(
+                        'assets/animations/smarttank.riv',
+                        artboard: _artboard!.name,
                         fit: BoxFit.cover,
+                        controllers: [_fillingAnimation!],
                       ),
+                      //         child: Rive(
+                      //   artboard: _artboard!,
+                      //   fit: BoxFit.cover,
+                      // ),
                             )
                           : const SizedBox(),
                     ),
