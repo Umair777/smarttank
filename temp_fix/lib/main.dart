@@ -62,14 +62,18 @@ class AuthGate extends StatelessWidget {
         print("Auth stream triggered");
         print("Current session: $session");
 
+        // final devices = await supabase
+        //     .from('devices')
+        //     .select()
+        //     .eq('owner_id', userId);
         if (session != null) {
           print("session active → dashboard");
-          return Dashboard();
+           return Dashboard();
           // return const LoginPage();
         } else {
           print("session null → login");
-          // return const LoginPage();
-          return Dashboard();
+          return const LoginPage();
+          // return Dashboard();
         }
       },
     );

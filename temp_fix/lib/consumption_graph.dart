@@ -59,7 +59,7 @@ class WaterConsumption extends StatelessWidget {
                 ))),
         Positioned(
             top: 425 + add_height,
-            left: 46 + add_width,
+            left: 36 + add_width,
             child: Text(
               'Water Consumption',
               textAlign: TextAlign.left,

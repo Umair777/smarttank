@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SensorStatus extends StatelessWidget {
+import 'providers/device_provider.dart';
+
+class SensorStatus extends ConsumerWidget  {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final deviceAsync = ref.watch(deviceProvider);
     return Stack(
       children: <Widget>[
         Positioned(
@@ -86,16 +90,44 @@ class SensorStatus extends StatelessWidget {
             ),
           ),
         ),
-        const Positioned(
+        // const Positioned(
+        //   top: 168,
+        //   left: 263,
+        //   child: Text(
+        //     'Connected',
+        //     style: TextStyle(
+        //       fontFamily: 'WorkSans',
+        //       color: Colors.white,
+        //       fontSize: 15,
+        //       fontWeight: FontWeight.w600,
+        //     ),
+        //   ),
+        // ),
+        Positioned(
           top: 168,
-          left: 263,
-          child: Text(
-            'Connected',
-            style: TextStyle(
-              fontFamily: 'WorkSans',
-              color: Colors.white,
-              fontSize: 15,
-              fontWeight: FontWeight.w600,
+          left: 250,
+          child: deviceAsync.when(
+            data: (device) {
+              final isConnected = device != null;
+
+              return Text(
+                isConnected ? 'Connected' : 'Not Connected',
+                style: TextStyle(
+
+                  fontFamily: 'WorkSans',
+                  color: isConnected ? Colors.white : Colors.red,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                ),
+              );
+            },
+            loading: () => const Text(
+              'Checking...',
+              style: TextStyle(color: Colors.white),
+            ),
+            error: (_, __) => const Text(
+              'Error',
+              style: TextStyle(color: Colors.red),
             ),
           ),
         ),

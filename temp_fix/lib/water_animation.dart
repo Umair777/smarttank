@@ -3,6 +3,7 @@ import 'package:rive/rive.dart';
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:smarttank/providers/device_provider.dart';
 import 'tank_level.dart';
 
 double mapTankLevelToDuration(int tankLevel) {
@@ -80,13 +81,20 @@ class _WaterUpdaterState extends State<WaterUpdater> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
-        ref.listen<int>(tankLevelProvider, (prevTankLevel, tankLevel) {
-          // Handle provider value changes, if needed
-          print("Tank changed: $tankLevel");
-          _resetAnimation();
-          _startAnimation(tankLevel);
-        }
-        );
+        ref.listen<AsyncValue<Map<String, dynamic>?>>(deviceProvider,
+                (previous, next) {
+              next.whenData((device) {
+                if (device == null) return;
+
+                final tankLevel =
+                ((device['tank_level_percent'] ?? 0) as num).toInt();
+
+                print("Tank changed: $tankLevel");
+
+                _resetAnimation();
+                _startAnimation(tankLevel);
+              });
+            });
 
         return Row(
           children: [
@@ -103,7 +111,15 @@ class _WaterUpdaterState extends State<WaterUpdater> {
                       child: _artboard != null
                           ? GestureDetector(
                               onTap: () {
-                                final currentLevel = ref.read(tankLevelProvider);
+                               // final currentLevel = ref.read(tankLevelProvider);
+                                final deviceAsync = ref.read(deviceProvider);
+
+                                final currentLevel = deviceAsync.when(
+                                  data: (device) =>
+                                      ((device?['tank_level_percent'] ?? 0) as num).toInt(),
+                                  loading: () => 0,
+                                  error: (_, __) => 0,
+                                );
                                 _resetAnimation();
                                 _startAnimation(currentLevel);
                               },
@@ -119,7 +135,7 @@ class _WaterUpdaterState extends State<WaterUpdater> {
                   ),
                   Positioned(
                     top: 700,
-                    left: 171,
+                    left: 161,
                     child: const Text(
                       'Tap to refresh',
                       textAlign: TextAlign.left,
